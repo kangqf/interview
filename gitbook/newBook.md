@@ -40,6 +40,6 @@
 
 但是我们可能会要使用自己的域名 类似 [int.kangqingfei.cn](int.kangqingfei.cn)，我们可以很方便的通过CNAME来满足要求。
 
-1. 在你的域名解析服务商处新加一条 int 的CNAME类型子域，指向 gitbook.com 
+1. 在你的域名解析服务商处新加一条 int 的CNAME类型子域，指向 www.gitbooks.io 
 2. 在你的书籍管理处设置域名，链接[https://www.gitbook.com/book/kangqf/interviewnotes/settings/domains](https://www.gitbook.com/book/kangqf/interviewnotes/settings/domains)
-3. 然后设置域名为int.kangqingfei.cn save 就ok啦 
+3. 然后设置域名为int.kangqingfei.cn save成功就ok啦 
