@@ -22,3 +22,14 @@
 1. 我们用GitBook Editor 来编辑和管理我们的Github仓库，包括分支管理
 2. 修改后我们在本地进行预览，没有问题就同步到我们的Github
 3. GitBook通过hook更新其内容
+
+### 新建书籍
+
+根据上面的workflow我们就能大致知道新建一本书籍的大概流程
+
+1. 安装 gitbook -> `npm install gitbook-cli -g`，安装编辑器
+2. 在Github新建一个仓库，然后clone到本地
+3. `gitbook init`初始化一本书籍
+4. 用编辑器导入，然后修改，保存
+5. `gitbook server`预览书籍，没有问题就同步到Github
+6. 在GitBook通过Github新建一本书籍，然后它就会自动Github同步
