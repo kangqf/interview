@@ -38,7 +38,7 @@
 
 通过上面的步骤你就可以通过 类似 [https://kangqf.gitbooks.io/interviewnotes/](https://kangqf.gitbooks.io/interviewnotes/)的链接来阅读你的书籍，然后通过类似 [https://www.gitbook.com/book/kangqf/interviewnotes/details](https://www.gitbook.com/book/kangqf/interviewnotes/details)的链接来查阅一些细节，或是下载pdf。
 
-但是我们可能会要使用自己的域名 类似 [int.kangqingfei.cn](int.kangqingfei.cn)，我们可以很方便的通过CNAME来满足要求。
+但是我们可能会要使用自己的域名 类似 [int.kangqingfei.cn](http://int.kangqingfei.cn)，我们可以很方便的通过CNAME来满足要求。
 
 1. 在你的域名解析服务商处新加一条 int 的CNAME类型子域，指向 www.gitbooks.io 
 2. 在你的书籍管理处设置域名，链接[https://www.gitbook.com/book/kangqf/interviewnotes/settings/domains](https://www.gitbook.com/book/kangqf/interviewnotes/settings/domains)
