@@ -1,7 +1,6 @@
 {
     "plugins": [
         "-highlight", 
-
-		"theme-comscore"
+	"theme-comscore"
     ]
 }
