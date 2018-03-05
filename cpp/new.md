@@ -114,8 +114,8 @@ int member1;
 
 ``` cpp
 auto p = new     ("kqf")         (T)        (123);
-//           placement_params   type     initializer
-// 对应着 布置参数 类型 初始化器 其中123 作为形参直接初始化类
+//           placement_params?   type     initializer
+// 对应着 布置参数？ 类型 初始化器 其中123 作为形参直接初始化类
 ```
 
 这里只是打印字符，更多的我们可以想到，在这里我们可以维护一个内存池来对我们的对象进行搞笑的内存管理。
@@ -152,7 +152,7 @@ int a;
 A *p = new("kkk") A(123); // 这里是new operator
 
 int buf[sizeof(A)];   // 在栈上，分配一个数组
-A *obj =  new(buf) A(123);  // 这里是 placement new
+A *obj =  new(buf) A(123);  // 这里是 placement new 这里的buf应该也是placement_params
 ```
 
 上述代码描述了三个概念的区别，同时在栈上面创造了一个对象。其中`placement new`那一步可以在`operator new`中实现，这就可以使得使用`new operator`得到的对象是在栈上的。因此，我们一般说 new 出来的对象内存是在`自由存储区`的，而不是像 malloc 说的一定是在堆中的。
