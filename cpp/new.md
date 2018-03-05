@@ -26,4 +26,4 @@ int *p = new int + 1; // 用法正确 因为 + 不可能是声明器的一部分
 int *p = new int * 1; // 用法错误 因为 * 可以作为声明器的一部分 等价于 int *p = new (int *) 1;
 ```
 
-另外，type 可以 使用 [`auto`与`decltype`](autoanddecltype)
+另外，type 可以 使用 [`auto`与`decltype`](autoanddecltype.html)
