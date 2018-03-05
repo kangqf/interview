@@ -76,7 +76,7 @@ new(2,f) T; // 调用 operator new(sizeof(T), 2, f)
             // (C++17) 或 operator new(sizeof(T), std::align_val_t(alignof(T)), 2, f)
 ```
 
-根据operator new 的位置的不同，这就有了第一个可选参数`::`的使用:
+根据使用的 operator new 的位置的不同，这就有了第一个可选参数`::`的使用:
 
 ``` cpp
 ::new T; // 从全局作用域查找operator new函数
