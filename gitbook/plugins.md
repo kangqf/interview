@@ -55,5 +55,7 @@
     }
     ```
 2. [gitbook-theme-comscore](https://www.npmjs.com/package/gitbook-theme-comscore) 
-ComScore 是一个彩色主题插件，把原来黑白的界面变得鲜艳了。
+    ComScore 是一个彩色主题插件，把原来黑白的界面变得鲜艳了。
+    通过`npm install --prefix ./ gitbook-theme-comscore`安装到当前目录。
+
 
