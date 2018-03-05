@@ -18,7 +18,9 @@
 
 `int *p = new int;`
 
-值得注意的是**无括号的 type 是贪心的：它将包含_ 任何能是声明器一部分 _的记号** 比如下面的用法：
+这里，p指向的对象将会执行[默认初始化](#defaultInit)，即 *p 的值是未定义的。
+
+值得注意的是**无括号的 type 是贪心的：它将包含_ 任何能是声明器一部分  _的记号** 比如下面的用法：
 
 ``` cpp
 int *p = new int + 1; // 用法正确 因为 + 不可能是声明器的一部分 等价于 int *p = new (int) + 1;
@@ -26,4 +28,14 @@ int *p = new int + 1; // 用法正确 因为 + 不可能是声明器的一部分
 int *p = new int * 1; // 用法错误 因为 * 可以作为声明器的一部分 等价于 int *p = new (int *) 1;
 ```
 
-另外，type 可以 使用 [`auto`与`decltype`](./autoanddecltype.md)
+另外，type 可以 使用 [`auto`与`decltype`](./autoanddecltype.md) 来推导出变量的类型。当使用这种方式时 initializer（初始化器） 不是可选的：因为要求使用它推导出替代 auto 的类型。所以可以有这样的用法：
+
+`auto p = new auto('c');`
+
+现在我们加上初始化器，于是会有以下几种使用方式：
+``` cpp
+int *p = new int();
+int *p = new int{};
+int *p = new int(2);
+int *p = new int{2};
+```
