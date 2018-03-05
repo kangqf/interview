@@ -8,7 +8,7 @@
 
 ``` 
 ch1/art1.md
-    # head1
+    # head1 
          text
     # head2
 ch1/art2.md
@@ -26,5 +26,17 @@ art5.md
 3. 需求3：在text处链接art3.md -> `[name](../ch2/art3.md)`
 4. 需求4：在text处链接head3 -> `[name](./art2.md#head3)`
 5. 需求5：在text处链接head5 -> `[name](../ch2/art3.md#head5)`
+
+### 使用anchor
+
+有的时候我们的head 可能是中文，这就不好操作了，于是有了下面的方式：
+
+`head1 {#anchor-name}` link to head1 -> `[name](#anchor-name)`
+
+此方式相当于给每个head关联了一个ID，以消除中文的不便。
+
+### 使用拖拽
+我们可以使用GitBook中将文件拖拽到编辑器的功能完成链接的插入。
+
 
 
