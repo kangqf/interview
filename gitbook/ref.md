@@ -15,7 +15,7 @@ ch1/art2.md
     # head3
     # head4
 ch2/art3.md
-    # head5
+    # head5 {#anchor1}
     # head6
 ch2/art4.md
 art5.md
@@ -34,6 +34,9 @@ art5.md
 `head1 {#anchor-name}` link to head1 -> `[name](#anchor-name)`
 
 此方式相当于给每个head关联了一个ID，以消除中文的不便。
+
+
+对于不是一个md文件内的anchor形式的引用需要指出md文件的路径如`[name](../ch2/art3.md#anchor1)`
 
 ### 使用拖拽
 我们可以使用GitBook中将文件（包括图片以及md文件）拖拽到编辑器的功能完成引用的插入。
