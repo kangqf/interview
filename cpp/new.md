@@ -67,7 +67,16 @@ new 表达式通过调用适当的分配函数分配存储。若 type 是非数�
 
 在调用分配函数时， new 表达式将请求的字节数作为类型的 std::size_t 第一参数传递给它，该参数对于非数组 T 准确为 sizeof(T)
 
-这就有了第一个可选参数`::`的使用:
+``` cpp
+new T;      // 调用 operator new(sizeof(T))
+            // (C++17) 或 operator new(sizeof(T), std::align_val_t(alignof(T))))
+new T[5];   // 调用 operator new[](sizeof(T)*5 + overhead)
+            // (C++17) 或 operator new(sizeof(T)*5+overhead, std::align_val_t(alignof(T))))
+new(2,f) T; // 调用 operator new(sizeof(T), 2, f)
+            // (C++17) 或 operator new(sizeof(T), std::align_val_t(alignof(T)), 2, f)
+```
+
+根据operator new 的位置的不同，这就有了第一个可选参数`::`的使用:
 
 ``` cpp
 ::new T; // 从全局作用域查找operator new函数
