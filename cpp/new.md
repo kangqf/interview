@@ -1,7 +1,9 @@
 ## 介绍 `new operator` `operator new` `placement new` 以及 `new`与`malloc` 的区别
 
 ### new表达式(new operator)
-[new表达式](http://zh.cppreference.com/w/cpp/language/new)就是我们日常用到的new。new表达式可以理解为 分配一个存储空间，并在存储空间上初始化一个无名对象或数组，然后然后指向对应的对象的地址。
+[new表达式](http://zh.cppreference.com/w/cpp/language/new)就是我们日常用到的new。new表达式可以分解为**分配**和**构造** 
+* 分配：分配一个存储空间。
+* 构造：在存储空间上初始化一个无名对象或数组，然后然后指向对应的对象的地址。
 
 #### 基本语法为：
 
@@ -32,6 +34,15 @@ int *p = new int * 1; // 用法错误 因为 * 可以作为声明器的一部分
 另外，type 可以 使用 [`auto`与`decltype`](./autoanddecltype.md) 来推导出变量的类型。当使用这种方式时 initializer（初始化器） 不是可选的：因为要求使用它推导出替代 auto 的类型。所以可以有这样的用法：
 
 `auto p = new auto('c');`
+
+若type是数组类型，则其第一维必须是可以转换层size_t 类型的表达式或变量，例如下面的用法
+
+``` cpp
+int n = 42;
+double a[n][5]; // 错误
+auto p1 = new double[n][5]; // okay
+auto p2 = new double[5][n]; // 错误
+```
 
 #### 现在我们加上初始化器，于是会有以下几种使用方式：
 
