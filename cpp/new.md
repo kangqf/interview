@@ -85,3 +85,51 @@ new T; // 从类T的作用于开始查找operator new函数
 
 ### operator new
 这个new 是一个分配函数，对于 全局的 operator new 就是调用malloc分配内存然后返回一个指针。对于一个类而言，它可以自行设计自己的 operator new 来实现内存的管理，比如说，不使用 malloc进行实现，而通过栈实现来new出栈上的空间。
+
+#### 重载 operator new
+下面是一个重载 operator new 的例子：
+
+```
+class T{
+
+public:
+
+T(int i):member1(i){}
+~T(){}
+// 此处声明为static或non-static均可，下同
+void *operator new(size_t size, const string& str) 
+{
+        cout << str << endl;
+        return ::operator new(size);
+}
+
+
+private:
+int member1;
+
+};
+```
+
+我们这样就重载了一个 operator new 函数来实现分配函数调用的时候打印字符串，对于上面定义的 T 类型，我们可以使用：
+
+``` cpp
+auto p = new ("kqf")             (T)     (123);
+//           placement_params   type     initializer
+// 对应着 布置参数 类型 初始化器 其中123 作为形参直接初始化类
+```
+
+#### 构造
+分配完内存后我们便需要在内存上构造对象并初始化。例如下面的代码：
+
+``` cpp
+void *buf = // 在这里为buf分配内存
+Class *pc = new (buf) Class();  // 这里构造并初始化对象
+```
+
+这里所 用到的new就是布置new，也就是用于构造对象的new
+
+### placement new   布置new
+
+
+
+
