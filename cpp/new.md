@@ -18,7 +18,7 @@
 
 `int *p = new int;`
 
-这里，p指向的对象将会执行[默认初始化](#defaultInit)，即 *p 的值是不确定的。
+这里，p指向的对象将会执行[默认初始化](./initial.md#defaultInit)，即 *p 的值是不确定的。
 
 值得注意的是**无括号的 type 是贪心的：它将包含_ 任何能是声明器一部分  _的记号** 比如下面的用法：
 
@@ -43,7 +43,7 @@ int *p = new int{2}; // 4
 其中以上int 均可改成 Object。
 
 * 对于方式1
-    * 在C++03之前是执行[默认初始化](#defaultInit)即其值不确定
-    * 在C++03以后便是执行[值初始化](#valueInit)
-* 对于方式2，执行的是[值初始化](#valueInit)
-* 对于方式3与4，执行的是[直接初始化](directInit)
+    * 在C++03之前是执行[默认初始化](./initial.md#defaultInit)即其值不确定
+    * 在C++03以后便是执行[值初始化](./initial.md#valueInit)
+* 对于方式2，执行的是[值初始化](./initial.md#valueInit)
+* 对于方式3与4，执行的是[直接初始化](./initial.md#directInit)
