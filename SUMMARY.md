@@ -19,6 +19,7 @@
 * [GitBook 使用](gitbook/gitbook.md)
   * [新建书籍](gitbook/newBook.md)
   * [使用插件](gitbook/plugins.md)
+  * [交叉引用](gitbook/ref.md)
 
 
 
