@@ -1,7 +1,5 @@
 {
     "plugins": [
-        "-highlight", 
-	"theme-comscore",
-	"highlight-pro"
+    
     ]
 }
