@@ -44,15 +44,16 @@
 ```
 
 ### 插件使用
-1. [gitbook-plugin-highlight-pro](https://github.com/tkggcelt/gitbook-plugin-highlight-pro) 一款改善gitbook代码高亮的插件
-
-配置为
-``` json
-{
-    "plugins": [
-        "-highlight", 
-        "highlight-pro"
-    ],
-}
-```
+1. [gitbook-plugin-highlight-pro](https://github.com/tkggcelt/gitbook-plugin-highlight-pro) 
+一款改善gitbook代码高亮的插件，配置为：
+    ``` json
+    {
+        "plugins": [
+            "-highlight", 
+            "highlight-pro"
+        ],
+    }
+    ```
+2. [gitbook-theme-comscore](https://www.npmjs.com/package/gitbook-theme-comscore) 
+ComScore 是一个彩色主题插件，把原来黑白的界面变得鲜艳了。
 
