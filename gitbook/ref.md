@@ -7,7 +7,11 @@
 例如我们有如下目录
 ``` 
 ch1/art1.md
+    # head1
+    # head2
 ch1/art2.md
+    # head3
+    # head4
 ch2/art3.md
 ch2/art4.md
 art5.md
