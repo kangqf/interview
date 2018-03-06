@@ -29,6 +29,16 @@
 ### decltype 使用方法
 * `decltype(f()) sum=x;` sum的类型就是f的返回值的类型
 * 处理顶层const`const int ci=0;` `decltype(ci) x=0;`   x的类型是const int，该点与auto不一样
-* 
+* 在处理引用上(与auto 也不一样)：
+    * decltype使用表达式的结果类型可以作为一条赋值语句的左值，那么decltype返回一个引用类型
+        ``` cpp
+        int i = 0, *p = &i;
+        decltype(*p) c = i; // c为引用类型必须要初始化
+        ```
+    * 如果表达式本身就是引用类型，那么decltype返回对应类型的引用类型
+    ``` cpp 
+    const int &cj=ci;
+    decltype(cj) y=x;   //y的类型是const int&，y绑定到x上
+    ```
 
 [参考](http://blog.csdn.net/qq_14982047/article/details/50628075)
