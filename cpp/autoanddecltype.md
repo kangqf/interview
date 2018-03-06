@@ -36,9 +36,9 @@
         decltype(*p) c = i; // c为引用类型必须要初始化
         ```
     * 如果表达式本身就是引用类型，那么decltype返回对应类型的引用类型
-    ``` cpp 
-    const int &cj=ci;
-    decltype(cj) y=x;   //y的类型是const int&，y绑定到x上
-    ```
+        ``` cpp 
+        const int &cj=ci;
+        decltype(cj) y=x;   //y的类型是const int&，y绑定到x上
+        ```
 
 [参考](http://blog.csdn.net/qq_14982047/article/details/50628075)
