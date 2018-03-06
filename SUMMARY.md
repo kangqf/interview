@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [C++ 语言](cpp/cpp.md)
   * [初始化](cpp/initial.md)
+  * [const](cpp/const.md)
   * [auto 与 decltype](cpp/autoanddecltype.md)
   * [lambda 表达式](cpp/lambda.md)
   * [new](cpp/new.md)
