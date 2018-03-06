@@ -8,8 +8,27 @@
 * 推断基本类型： `auto kkk = a + b;`
 * 一条语句中含有多个变量： `auto kkk = 9, *kk = &kkk;` 但是多个变量的类型不一致就会引发错误：`auto kkk = 1, kk = 3.14;`
 * 推断引用时会把引用对象的类型作为推断类型：`int i = 0, &k = i;` `auto kk = k` kk将会是int类型
+* auto 推断const类型，顶层const会被忽略，底层const会被保留。
+
+    ``` cpp 
+    const int ci=i,&cr=i;
+    auto a=ci;      //a为int（忽略顶层const)
+    auto b=cr;      //b为int（忽略顶层const，cr是引用）
+    auto c=&i;      //c为int *
+    auto d=&ci;     //d是pointer to const int(&ci为底层const）
+    ```
+
+* 使用auto声明顶层const：`const auto f = ci`
+* 使用auto声明尾置返回类型的函数
+    实例：申明一个返回指向一个维度为10的int数组的指针
+      * 原生的方式： `int (*function(int i))[10]`
+      * 使用尾置返回： `auto function(int i) -> int (*)[10]`
+      * 使用类型别名： `typedef int arrT[10]` or `using arrT = int[10]` then `arrT* function(int i)`
+      * 使用`decltype`：首先`int arr[] = {1,2,3,4}` then `decltype(arr) *function(int i)` 记得decltype返回的是类类型，要想返回指针就需要加上* 修饰符
+
+### decltype 使用方法
+* `decltype(f()) sum=x;` sum的类型就是f的返回值的类型
+* 处理顶层const`const int ci=0;` `decltype(ci) x=0;`   x的类型是const int，该点与auto不一样
 * 
-
-
 
 [参考](http://blog.csdn.net/qq_14982047/article/details/50628075)
