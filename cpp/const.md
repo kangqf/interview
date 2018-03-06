@@ -29,6 +29,8 @@ const int &r2=j;    //底层const r2 被绑定到一个临时常量上，而不�
 #### const 与 成员函数
 在成员函数后面加上const表示该函数不会改变类的任何成员变量`const int fun(const int * const p) const{}`
 
-
+### constexpr
+constexpr 指定符声明可以在**编译时**求得函数或变量的值。 划重点，这里的constexpr限定了是编译期常量。
+const 修饰的是一个变量，而constexpr修饰的是一个表达式。详见[cppreference例子](http://zh.cppreference.com/w/cpp/language/constexpr)
 
 参考[这里](http://blog.csdn.net/qq_14982047/article/details/50615422)
