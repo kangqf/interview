@@ -162,7 +162,19 @@ int main(int argc, char *argv[])
 
 
 ### 直接初始化 {#directInit}
-以调用构造函数的形式显示初始化对象
+以调用构造函数的形式显示初始化对象，有以下几种形式：
+
+``` cpp
+T object ( arg ); // A kkk(2); A kkk{2} 以表达式或花括号初始化器列表 (C++11 起)的非空带括号列表初始化
+T object ( arg1, arg2, ... );   // A aaa(1,2); 
+T object { arg };	// int jjj{1,2} 以单个花括号环绕的初始化器初始化 非类类型对象
+T ( other )                // 用函数转型或以带括号表达式列表初始化纯右值临时量
+T ( arg1, arg2, ... );
+static_cast< T >( other )	// 用 static_cast 表达式初始化纯右值临时量
+new T(args, ...)		// 用带非空初始化器的 new 表达式初始化拥有动态存储期的对象
+Class::Class() : member(args, ...) {...}	 // 用构造函数初始化器列表初始化基类或非静态成员	
+[arg](){...}	                 //在 lambda 表达式中从以复制捕捉的变量初始化闭包对象成员
+```
 
 
 
