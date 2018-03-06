@@ -7,6 +7,7 @@
   * [auto 与 decltype](cpp/autoanddecltype.md)
   * [lambda 表达式](cpp/lambda.md)
   * [new](cpp/new.md)
+  * [构造函数](cpp/constructor.md)
   * [相关面试题](cpp/inttopic.md)
 * [操作系统](os/os.md)
 * [数据库](db/db.md)
