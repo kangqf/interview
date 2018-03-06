@@ -142,10 +142,12 @@ int main(int argc, char *argv[])
     new A(); // 值初始化
     new A{}; // 值初始化
     
+    cout<<C{}.member1<<endl; // 使用空花括号对 {} 且 T 是聚合类型，则进行聚合初始化而非值初始化。 初始化member1 为零
+    
+    // 以下为值初始化
     cout<<A{}.member1<<endl; // 隐式构造函数，则零初始化 member1 为零
     cout<<B{}.member1<<endl; // 无默认构造函数，只有复制构造函数，执行默认初始化，默认初始化发现没有默认构造函数 所以出错
     cout<<C().member1<<endl; // 默认构造函数为删除，执行默认初始化，默认初始化发现没有默认构造函数 所以出错
-    cout<<C{}.member1<<endl; // 使用空花括号对 {} 且 T 是聚合类型，则进行聚合初始化而非值初始化。 初始化member1 为零
     cout<<D{}.member1<<endl; // 用户提供的默认构造函数，执行默认初始化，member1也是默认初始化 其值不确定
 
     return 0;
