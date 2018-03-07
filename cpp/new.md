@@ -157,14 +157,15 @@ A *obj =  new(buf) A(123);  // 这里是 placement new 这里的buf应该也是p
 
 上述代码描述了三个概念的区别，同时在栈上面创造了一个对象。其中`placement new`那一步可以在`operator new`中实现，这就可以使得使用`new operator`得到的对象是在栈上的。因此，我们一般说 new 出来的对象内存是在`自由存储区`的，而不是像 malloc 说的一定是在堆中的。
 
-## `new` 与 `malloc`的区别 [参考](http://www.cnblogs.com/maluning/p/7944231.html) {#diffofnewandmalloc}
-
+## `new` 与 `malloc`的区别  {#diffofnewandmalloc}
 
 1. new 不需要指定内存块的大小  malloc 需要
 2. new 返回指向指定类型的指针 malloc 返回指向void * 需要自己转换
 3. new 分配失败抛出异常 malloc 只是返回NULL
 4. new 可以进行重载，自定义其行为 malloc 不可以
 5. new 分配内存在自由存储区 malloc 在堆
+
+[参考](http://www.cnblogs.com/maluning/p/7944231.html)
 
 #### 内存分区
 * 在C++中，内存区分为5个区，分别是堆、栈、自由存储区、全局/静态存储区、常量存储区；
