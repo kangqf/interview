@@ -67,3 +67,5 @@ https://api.weibo.com/2/statuses/user_timeline.json?access_token=2.008xxxxxxxWa3
 ```
 
 然后微博就会以json 的形式返回用户的最新的微博了。
+
+参考[理解OAuth 2.0](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
