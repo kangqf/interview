@@ -1,1 +1,5 @@
-### HTTP 方法小节
+### HTTP 方法
+
+POST
+
+GET
