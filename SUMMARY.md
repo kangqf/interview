@@ -22,6 +22,7 @@
 * [Linux](linux/linux.md)
 * [设计模式](design/design.md)
 * [数据结构算法](dsa/dsa.md)
+* [面试题](inter/inter.md)
 * [GitBook 使用](gitbook/gitbook.md)
   * [新建书籍](gitbook/newBook.md)
   * [使用插件](gitbook/plugins.md)
