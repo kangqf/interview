@@ -27,6 +27,7 @@
     * [HTTP2.0](./net/http/http2.md) 
     * [HTTP握手与挥手](./net/http/hand.md) 
 * [Linux](linux/linux.md)
+  * [常用的配置命令](linux/config.md)
 * [设计模式](design/design.md)
 * [数据结构算法](dsa/dsa.md)
 * [面试题](inter/inter.md)
