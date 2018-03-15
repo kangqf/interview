@@ -11,4 +11,10 @@
     # 查看日志
     plog
     ```
-2. xxx
+2. 修复apt boken
+    ``` sh
+    # 错误提示为： You might want to run 'apt --fix-broken install' to correct these.
+    sudo apt --fix-broken install
+    sudo apt-get update
+    sudo apt-get upgrade
+    ```
