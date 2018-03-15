@@ -12,5 +12,3 @@
 2. post 的数据通常是位于http报文的主体部分，而其数据量的大小限制受到服务器的配置影响，对于nginx 默认是8m。
 3. post 的请求不会被日志记录，较为安全。
 4. post 刷新页面会重复提交数据。
-
-[参考](https://my.oschina.net/xianggao/blog/73269)
