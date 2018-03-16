@@ -12,7 +12,6 @@
 * [操作系统](os/os.md)
   * [进程与线程](os/processandthread.md)
   * [协程](os/coroutine.md)
-  * [僵尸进程孤儿进程与守护进程](os/classprocess.md)
   * [IO分类](os/ioclass.md)
   * [IO多路复用](os/mutilio.md)
   * [webserver与IO](os/webserver.md)
