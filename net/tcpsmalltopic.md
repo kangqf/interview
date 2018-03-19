@@ -41,3 +41,16 @@ TCP是基于字节流的，虽然应用层和TCP传输层之间的数据交互�
 3. 可以在数据包之间设置边界，如添加特殊符号，这样，接收端通过这个边界就可以将不同的数据包拆分开。
 
 参考[TCP粘包，拆包及解决方法](https://blog.insanecoder.top/tcp-packet-splice-and-split-issue/)
+
+
+
+
+
+
+
+
+
+
+
+
+
