@@ -47,6 +47,14 @@ MSL指的是报文段的最大生存时间，如果报文段在网络活动了MS
 正如上图所示，对于一个正常的通信流程一般是这样的：
 request -> ACK ... response -> ACK
 
+即使是 返回 404 的状态码，那么，对于一个 request 也应该回应 一个ACK
+例如 Nginx:
+
+![](/assest/img/http404.png) 
+
+而很多自行设计的 webserver 就会忽略这一点：
+
+![](/assest/img/myserver404.png)
 
 
 
