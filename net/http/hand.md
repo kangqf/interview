@@ -32,7 +32,7 @@ SYN -> SYN/ACK -> ACK
 FIN/ACK -> ACK ... FIN/ACK -> ACK
 
 ##### TIME_WAIT
-值得注意的是 最后一个ACK发送完后，发送端会把状态 变成 TIME_WAIT 而不是立马关闭连接，而是在此状态停留两倍的MSL时长，原因：
+值得注意的是 最后一个ACK发送完后，发送端会把状态 变成 TIME_WAIT 而不是立马关闭连接，而是在此状态停留 两倍的 MSL 时长，原因：
 如果最后一个 ACK 丢失，那么被动端会重发 FIN/ACK，那么如果主动端不是 TIME_WAIT 状态就会
     * 回应rst 而不是ACK 或 
     * 主动端已经建立了新的连接，就会断开新连接造成错误。
