@@ -9,7 +9,7 @@
   * [new](cpp/new.md)
   * [构造函数](cpp/constructor.md)
   * [STL使用技巧](cpp/stdusage.md)
-  * [C++语言细节](cpp/smalltopic.ms)
+  * [C++语言细节](cpp/smalltopic.md)
   * [相关面试题](cpp/inttopic.md)
 * [操作系统](os/os.md)
   * [进程与线程](os/processandthread.md)
