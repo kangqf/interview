@@ -31,6 +31,7 @@
   * [TCP/UDP](net/tcpandudp.md)
     * [TCP 小知识点](net/tcpsmalltopic.md)
 * [Linux](linux/linux.md)
+  * [基本概念](linux/basicconcept.md)
   * [常用的配置命令](linux/config.md)
   * [git](linux/git.md)
   * [tmux](linux/tmux.md)
