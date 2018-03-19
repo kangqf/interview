@@ -1,6 +1,7 @@
 ## STL 中一些函数的使用技巧
 
 ### 从vector 到 set
+C++ STL中标准关联容器set, multiset, map, multimap内部采用的就是一种非常高效的平衡二叉查找树：红黑树
 1. 通过初始化的方式
     ``` cpp
         std::vector<int> nums1 {3, 1, 4, 6, 5, 9};
