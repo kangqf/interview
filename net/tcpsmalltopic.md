@@ -8,4 +8,4 @@ TCP快速打开是对TCP的一种简化握手手续的拓展，用于提高两�
 
 ![示意图](/assest/img/devconf-2014-kernel-networking-walkthrough-16-638.jpg)
 
-[参考](https://chenjx.cn/linux-tfo/)
+参考[为Linux系统开启 TCP Fast Open (TFO)](https://chenjx.cn/linux-tfo/)
