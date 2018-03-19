@@ -25,13 +25,3 @@ QUIC 和 SPDY 一样又是谷歌开发的一个基于udp 的新协议。QQ空间
 
 参考[https://cloud.tencent.com/developer/article/1017235](https://cloud.tencent.com/developer/article/1017235)
 
-#### HTTP Server 的作用
-对于一款HTTP Server 其主要作用有：
-
-* 处理http请求，返回数据给浏览器 
-* 负载均衡/反向代理/健康检查
-* 日志(access log)
-* URL Rewrite
-* gzip 
-* cache-control（expire,etag,last-modified） 
-* keep-alive（长连接、短连接）
