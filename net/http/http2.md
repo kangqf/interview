@@ -12,6 +12,8 @@ HTTP2.0 在谷歌的开发者工具里面简称为h2。首先 h2 来源于 SPDY/
 3. 多路复用。直白的说就是所有的请求都是通过一个 TCP 连接并发完成。HTTP/1.x 虽然通过 pipeline 也能并发请求，但是多个请求之间的响应会被阻塞的，所以 pipeline 至今也没有被普及应用，而 HTTP/2 做到了真正的并发请求。同时，流还支持优先级和流量控制。
 4. Server Push。服务端能够更快的把资源推送给客户端。例如服务端可以主动把 JS 和 CSS 文件推送给客户端，而不需要客户端解析 HTML 再发送这些请求。当客户端需要的时候，它已经在客户端了。
 
+HTTP2 的推送参考 [这里](https://cloud.tencent.com/developer/article/1007111)
+
 参考[http://io.upyun.com/2015/05/13/http2/](http://io.upyun.com/2015/05/13/http2/)
 
 #### 新的 QUIC( quick udp internet connection )
