@@ -24,7 +24,7 @@ FCS(Frame Check Sequences) 帧校验序列
 详细内容参考[IEEE 802.11 序列帧](http://rungame.me/blog/2016/06/23/wlan/)
 
 ### IP 报文的帧结构
-![](assest/img/ip_package.png)
+![](/assest/img/ip_package.png)
 
 * 版本号 4bit 4 代表 IPv4 
 * IP头部的长度 4bit 计量单位是4字节，由于只有四位所以最大的首部的长度为 15 * 4 = 60
@@ -43,8 +43,19 @@ FCS(Frame Check Sequences) 帧校验序列
 ### 传输层
 
 #### TCP 的帧结构
+![](/assest/img/tcp_segment.png)
+
+2 端口（源端口和目的端口） 2长度（首部长度和窗口长度） 2 序号（包序号和确认序号） 1校验和（包括头部和数据） 1 紧急指针 最后还有  6 标识
+
+URG，紧急指针有效。
+ACK，确认序号有效。
+PSH，接收方应该尽快将这个报文段交给应用层。
+RST，重建连接。
+SYN，同步序号用来发起一个连接。
+FIN，发送端完成发送，用来结束一个连接。
 
 #### UDP 的帧结构
+udp 的帧头就比较简单，两个 端口，一个长度，一个校验和
 
 ### 应用层 
 
@@ -52,4 +63,23 @@ FCS(Frame Check Sequences) 帧校验序列
 
 ##### HTTP/1.1
 
+<request-line>
+
+<headers>
+
+<blank-line>
+
+<request-body>
 ##### HTTP/2
+
+### ICMP
+帧结构 ： 类型 代码 校验和
+#### ping
+请求： 类型值 8  回送请求
+应答： 类型值 0  回送应答
+#### traceroute
+设置TTL 并封装无法到达的udp 报文
+类型值 3 目的不可达
+
+
+
