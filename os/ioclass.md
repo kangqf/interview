@@ -21,3 +21,4 @@ linux下，可以通过设置socket使其变为non-blocking。对一个 non-bloc
 信号驱动IO 与 非阻塞IO 不同的一点就是用户进程不需要不停地取询问内核数据是否准备好，而是通过信号的方式通知用户进程数据已经准备好了，但是从内核拷贝数据到用户进程这一步还是阻塞的。
 
 参考 [IO - 同步，异步，阻塞，非阻塞 （亡羊补牢篇）](http://blog.csdn.net/historyasamirror/article/details/5778378])
+参考 [同步、异步与阻塞、非阻塞，UNIX I/O模型](http://strawhatfy.github.io/2015/04/21/synchronous-asynchronous-blocking-nonblocking/)
