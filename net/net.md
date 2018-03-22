@@ -63,14 +63,22 @@ udp 的帧头就比较简单，两个 端口，一个长度，一个校验和
 
 ##### HTTP/1.1
 
-<request-line>
+`request-line`
+GET /index.html HTTP/1.1
 
-<headers>
+`headers`
+User-Agent：产生请求的浏览器类型。
+Accept：客户端可识别的内容类型列表。
+Host：请求的主机名，允许多个域名同处一个IP地址，即虚拟主机。
 
-<blank-line>
+`blank-line`
+空行
 
-<request-body>
+`request-body`
+请求包体
+
 ##### HTTP/2
+参考 [HTTP/2笔记之帧](http://www.blogjava.net/yongboy/archive/2015/03/20/423655.html)
 
 ### ICMP
 帧结构 ： 类型 代码 校验和
