@@ -40,6 +40,8 @@
   * [tmux](linux/tmux.md)
 * [设计模式](design/design.md)
 * [数据结构算法](dsa/dsa.md)
+* [刷题](showcode/showcode.md)
+* [面试经验](intexp/intexp.md)
 * [面试题](inter/inter.md)
 * [GitBook 使用](gitbook/gitbook.md)
   * [新建书籍](gitbook/newBook.md)
