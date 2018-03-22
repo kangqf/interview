@@ -90,4 +90,19 @@ Host：请求的主机名，允许多个域名同处一个IP地址，即虚拟�
 类型值 3 目的不可达
 
 
-
+## 计算机网络中常用的端口号
+* 20 ftp 数据
+* 21 ftp 控制
+* 22 ssh
+* 23 telnet
+* 25 smtp
+* 53 dns
+* 67 dhcp 服务器
+* 68 dhcp 客户端
+* 69 udp tftp
+* 80 tcp http
+* 109 tcp pop2
+* 110 tcp pop3
+* 123 udp ntp
+* 443 tcp https
+* 
