@@ -46,6 +46,8 @@
   * [剑指Offer](showcode/targetoffer.md)
   * [华为编程题](showcode/codinghuawei.md)
   * [LeetCode](showcode/leetcode.md)
+  * [公司套题](showcode/codingcompany.md)
+    * [今日头条第一批](showcode//codingcompany/1.md)
 * [面试题](inter/inter.md)
 * [面试经验](intexp/intexp.md)
 * [GitBook 使用](gitbook/gitbook.md)
