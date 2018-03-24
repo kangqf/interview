@@ -42,6 +42,7 @@
   * [tmux](linux/tmux.md)
 * [设计模式](design/design.md)
 * [数据结构算法](dsa/dsa.md)
+  * [二叉树](dsa/bintree.md)
 * [刷题](showcode/showcode.md)
   * [专题](showcode/subject.md)
     * [字符串](showcode/subject/char.md)
