@@ -14,3 +14,10 @@
 5. 404 
   内容未找到    
 
+
+
+### Ajax 状态码
+
+201——提示知道新文件的URL
+
+更多ajax状态码相关:[https://www.jianshu.com/p/a01cfd612b69](https://www.jianshu.com/p/a01cfd612b69)
