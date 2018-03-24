@@ -72,7 +72,7 @@ Accept：客户端可识别的内容类型列表。
 Host：请求的主机名，允许多个域名同处一个IP地址，即虚拟主机。
 
 `blank-line`
-空行
+空行 内容 为 `CR` + `CF` 0x0d+0x0a
 
 `request-body`
 请求包体
