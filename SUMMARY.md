@@ -25,6 +25,7 @@
   * [HTTP](net/http.md)
     * [HTTP 方法](net/http/method.md)
     * [HTTP 状态码](net/http/statuscode.md)
+    * [HTTP 首部](net/http/header.md)
     * [Cookie 和 Session](net/http/cookieandsession.md) 
     * [OAuth2.0](./net/http/oauth2.md) 
     * [HTTPS](./net/http/https.md) 
