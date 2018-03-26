@@ -170,3 +170,14 @@ A *obj =  new(buf) A(123);  // 这里是 placement new 这里的buf应该也是p
 #### 内存分区
 * 在C++中，内存区分为5个区，分别是堆、栈、自由存储区、全局/静态存储区、常量存储区；
 * 在C中，C内存区分为堆、栈、全局/静态存储区、常量存储区；
+* code data bss heap mmap stack
+
+#### malloc 的实现
+参考这篇特别好的文章：[如何实现一个malloc](http://blog.codinglabs.org/articles/a-malloc-tutorial.html)
+
+在此基础上整理出下面一些malloc实现需要知道的东西：
+
+1. 使用 sbrk 从堆中分配内存。
+2. 从链表中查找可用block 有 first fit 和 best fit 两种算法
+3. 对于first fit 如果存在很小size部分占用很大的block就需要将其分裂
+4. 对于block 的释放首先要检测其是否有效
