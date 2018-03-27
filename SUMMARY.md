@@ -56,6 +56,8 @@
   * [LeetCode](showcode/leetcode.md)
   * [公司套题](showcode/codingcompany.md)
     * [今日头条第一批](showcode//codingcompany/1.md)
+  * [蓝桥杯](showcode/lanqiao.md)
+    * [第六届真题解析](showcode/6th.md)
 * [面试题](inter/inter.md)
 * [面试经验](intexp/intexp.md)
 * [GitBook 使用](gitbook/gitbook.md)
