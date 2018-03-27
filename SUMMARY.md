@@ -8,6 +8,7 @@
   * [lambda 表达式](cpp/lambda.md)
   * [new](cpp/new.md)
   * [构造函数](cpp/constructor.md)
+  * [可调用对象](cpp/callableobj.md)
   * [多态](cpp/polymorphism.md)
   * [STL使用技巧](cpp/stdusage.md)
   * [C++语言细节](cpp/smalltopic.md)
