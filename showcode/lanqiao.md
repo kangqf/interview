@@ -94,3 +94,25 @@ while (next_permutation(str.begin(), str.end()))
 
 4. `unique`函数
 该函数只会返回最后那个唯一的迭代器，要想得到真正的长度，应该用得到的迭代器减去begin，如果要删除重复的字符就应该用`erase(it,lll.end())`
+
+5. 计时
+``` cpp
+#include <time.h>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    clock_t start = clock();
+
+    for(int i = 0; i < 1000000; ++i)
+        for(int j = 0; j < 1000; ++j)
+            ;
+
+    clock_t end = clock();
+
+    cout<<"start: "<<start<<" end: "<<end<<" cost: "<<(double)(end - start) / CLOCKS_PER_SEC<<endl;
+
+    return 0;
+}
+```
