@@ -20,7 +20,9 @@ PUT 通过不带验证的方式向服务器传输文件，一般开放于REST类
 与PUT相反用户删除服务器中的文件，也是不带验证的一种方法
 
 #### OPTIONS 
-询问服务端对指定URI资源所支持的方法，例如：`OPTIONS * http/1.1`服务端会返回200 + Allow:GET,POST 等支持的方法列表
+询问服务端对指定URI资源所支持的方法，例如：`OPTIONS * http/1.1` 服务端会返回200 + Allow:GET,POST 等支持的方法列表
+
+例如 百度的options 响应是 `Allow:GET,HEAD,POST,OPTIONS,TRACE`
 
 #### HEAD
 只返回报文首部，不返回报文主体，用于获取报文的一些信息（确认uri有效性和资源更新日期等）以确定下一步要进行的操作

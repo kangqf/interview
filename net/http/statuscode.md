@@ -1,6 +1,18 @@
 ### HTTP 状态码
 
-首先 2xx 系列标识正常， 3xx 系列标识重定向，4xx标识客户端请求错误，5xx标识服务器响应错误
+首先 2xx 系列标识正常， 3xx 系列标识重定向，4xx标识客户端请求错误，5xx标识服务器响应错误。
+
+* 1XX 
+Informational（信息性状态码） 接收的请求正在处理
+* 2XX 
+Success（成功状态码） 请求正常处理完毕
+* 3XX 
+Redirection（重定向状态码）  需要进行附加操作以完成请求
+* 4XX 
+Client Error(客户端错误状态码）  服务器无法处理请求
+* 5XX 
+Server Error（服务器错误状态码）  服务器处理请求出错
+
 
 1. 200 OK
   正常响应
@@ -24,7 +36,7 @@
 1. 303  See Other
   告知客户端存在里一个资源的URI，客户端应该通过GET方法向该URI请求数据
 1. 307 Temporary Redirect
-  也是临时重定向，区别在于302不允许将POST变换成GET307允许
+  也是临时重定向，区别在于302不允许将POST变换成GET 307允许
 1. 400 Bad Request
   报文中有语法错误
 1. 500 Internal Server Error
