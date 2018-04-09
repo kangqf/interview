@@ -50,6 +50,7 @@
   * [二叉树](dsa/bintree.md)
   * [DFS 与 BFS](dsa/dfsandbfs.md)
   * [hash](dsa/hash.md)
+  * [排序](das/sort.md)
 * [刷题](showcode/showcode.md)
   * [专题](showcode/subject.md)
     * [字符串](showcode/subject/char.md)
