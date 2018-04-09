@@ -49,11 +49,43 @@
 
 `SELECT quantity*item_price AS expanded_price FROM Orderitems WHERE order_num = 20008`
 
+10. 函数
+字符处理函数
+```
+LEFT() 返回字符串左边字符
+LENGTH() 返回字符串长度
+LOWER() 将字符串转为小写
+LTRIM() 去除字符串左侧的空格
+RTGHT() 返回字符串右边字符
+RTIM() 去除右边的空格
+UPPER() 将字符串转换为大写
+```
 
+数值处理函数
+```
+ABS()
+COS()
+EXP()
+PI()
+SIN()
+SQRT()
+TAN()
+```
 
+聚集函数 经常与AS 连用
+```
+AVG()
+COUNT() 可以内嵌 DISTINCT 例如 AVG(DISTINCT prod_price)
+MAX()
+MIN()
+SUM()
+```
+11. 分组数据  group by   having
+`SELECT cust_id,COUNT(*) AS orders From Orders GROUP BY cust_id HAVING COUNT(*) >= 2`
 
+这里 **先通过 where 过滤，然后进行 group by 最后再通过having 筛选**
 
-
+SELECT 子句的顺序**SETECT FROM WHERE GROUP BY HAVING ORDER BY**
 
 
 sql 操作符优先级
