@@ -57,7 +57,10 @@ TCP是基于字节流的，虽然应用层和TCP传输层之间的数据交互�
 更多内容参考 [糊涂窗口综合症及其解决方法（Nagle算法，Clark方法，延时确认方法，CORK算法）](https://blog.csdn.net/hzhsan/article/details/46429749)
 
 
+#### tcpcopy
+tcpcopy本质是利用在线数据包信息，模拟tcp客户端协议栈，欺骗测试服务器的上层应用服务，从而对上层服务进行压测。
 
+参考[tcpcopy架构漫谈](https://blog.csdn.net/wangbin579/article/details/8949315)
 
 
 
