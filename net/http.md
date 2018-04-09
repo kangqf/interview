@@ -11,6 +11,14 @@ http/1.1 新增了 TRACE CONNECT OPTION 三个方法 删除了 LINK UNLINE 两�
 
 http/1.1 默认使用 keep-alive
 
+http/1.1 引入更多缓存头控制缓存策略
+
+http/1.1  带宽优化及网络连接的使用，增加断点续传功能
+
+http/1.1  错误通知的管理：新增24个错误状态码，如409（conflict）表示请求资源与资源当前状态冲突、410（Gone）表示服务器上某个资源被永久性删除。
+
+http/1.1 Host头处理。随着虚拟主机技术的发展，一台物理服务器上可以存在多个虚拟主机且共享同一个IP。HTTP 1.1请求和响应都支持host头，请求消息中如果缺少host，会报400（Bad Request）
+
 
 ### http/2.0 与 http/1.1
 http/2.0 使用了头部压缩 hpack
