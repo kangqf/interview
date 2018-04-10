@@ -35,6 +35,7 @@ A右孩子的左孩子变成A的右孩子   A下沉为A右孩子的左孩子  A�
 
 ### 红黑树
 参考[教你透彻了解红黑树](https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md)
+[面试题——轻松搞定面试中的红黑树问题](http://www.cnblogs.com/wuchanming/p/4444961.html)
 #### 红黑树的5条性质：
 
 1）每个结点要么是红的，要么是黑的。  
