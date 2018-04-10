@@ -13,3 +13,6 @@
 建议阅读：
 [C/C++协程库libco：微信怎样漂亮地完成异步化改造](http://www.infoq.com/cn/articles/CplusStyleCorourtine-At-Wechat)
 [开源libco库：单机千万连接、支撑微信8亿用户的后台框架基石](http://www.52im.net/thread-623-1-1.html)
+
+[libco 分析(上)：协程的实现](http://kaiyuan.me/2017/07/10/libco/)
+[libco 分析(下)：协程的管理](http://kaiyuan.me/2017/10/20/libco2/)
