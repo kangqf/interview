@@ -34,6 +34,7 @@ A右孩子的左孩子变成A的右孩子   A下沉为A右孩子的左孩子  A�
 新插入的那个父节点经过两次上浮到达顶端
 
 ### 红黑树
+参考[教你透彻了解红黑树](https://github.com/julycoding/The-Art-Of-Programming-By-July/blob/master/ebook/zh/03.01.md)
 #### 红黑树的5条性质：
 
 1）每个结点要么是红的，要么是黑的。  
