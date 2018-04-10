@@ -25,6 +25,7 @@
 * [数据库](db/db.md)
  * [SQL](db/sql.md)
  * [索引](db/index.md)
+ * [数据库范式理论](db/nf.md)
 * [计算机网络](net/net.md)
   * [HTTP](net/http.md)
     * [HTTP 方法](net/http/method.md)
