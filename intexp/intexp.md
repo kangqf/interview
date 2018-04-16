@@ -37,7 +37,7 @@
 
 
 ### 并发数据的处理
-1. 熟悉并发数据的处理架构  参考 《大数据日知录》《OReilly Designing Data-Intensive Applications》
+1. 熟悉并发数据的处理架构  参考 《大数据日知录》 《OReilly Designing Data-Intensive Applications》
 
 ### 数据库
 1. 熟悉基本的SQL操作  参考 《SQL必知必会》
