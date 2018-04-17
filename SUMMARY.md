@@ -70,8 +70,6 @@
   * [hash](dsa/hash.md)
   * [排序](das/sort.md)
 * [刷题](showcode/showcode.md)
-  * [专题](showcode/subject.md)
-    * [字符串](showcode/subject/char.md)
   * [剑指Offer](showcode/targetoffer.md)
   * [华为编程题](showcode/codinghuawei.md)
   * [LeetCode](showcode/leetcode.md)
