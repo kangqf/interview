@@ -68,7 +68,7 @@
   * [DFS 与 BFS](dsa/dfsandbfs.md)
   * [动态规划](dsa/dp.md)
   * [hash](dsa/hash.md)
-  * [排序](das/sort.md)
+  * [排序](dsa/sort.md)
 * [刷题](showcode/showcode.md)
   * [剑指Offer](showcode/targetoffer.md)
   * [华为编程题](showcode/codinghuawei.md)
