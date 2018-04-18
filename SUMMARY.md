@@ -59,6 +59,7 @@
   * [基本概念](linux/basicconcept.md)
   * [git](linux/git.md)
   * [tmux](linux/tmux.md)
+  * [vim](linux/vim.md)
   * [Makefile](linux/makefile.md)
   * [正则表达式](linux/regex.md)
   * [shell](linux/shell.md)
