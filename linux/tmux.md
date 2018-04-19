@@ -11,6 +11,7 @@ tmuxinator projectName
 配置文件参考[这里](https://github.com/kangqf/config/blob/ubuntu/tmux.conf)
 
 由上面更改的快捷键主要有：
+
 ```
 1. Prefix: C-a           前缀键
 2. Prefix + H/J/K/L      调整窗格大小
@@ -24,6 +25,7 @@ tmuxinator projectName
 tmux 自带的一些快捷键（省略Prefix）
 
 * 窗格相关
+
 ``` 
 1. 方向键         切换到上下左右的窗格
 2. Ctrl+方向键    调节当前窗格的大小
@@ -38,6 +40,7 @@ tmux 自带的一些快捷键（省略Prefix）
 ```
 
 * 窗口相关
+
 ``` 
 c               创建一个窗口
 数字            跳到对应数字的窗口
@@ -52,6 +55,7 @@ f               查找包含指定字符的窗口
 ```
 
 * 会话相关
+
 ```
 s              显示会话列表
 d              断开当前会话的关联
@@ -62,6 +66,7 @@ t              显示时钟
 ```
 
 * 命令行相关
+
 ```
 1. tmux new-session -s [name]   新建名为name的会话
 2. tmux a                       关联最近的一个会话
