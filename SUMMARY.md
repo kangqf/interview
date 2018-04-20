@@ -66,6 +66,7 @@
   * [Makefile](linux/makefile.md)
   * [正则表达式](linux/regex.md)
   * [shell](linux/shell.md)
+    * [输入输出](linux/shell/io.md)
     * [sed](linux/shell/sed.md)
     * [awk](linux/shell/awk.md)
   * [常用的配置命令](linux/config.md)
