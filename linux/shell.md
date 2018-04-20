@@ -118,6 +118,8 @@ val=`expr 2 + 2`
 val=`expr $a + $b`
 val=`expr $a \* $b`  # 乘法
 b=$a                 # 赋值
+re=$[a+b]        # 注意等号两边不能有空格
+let s=(2+3)*4
 ```
 
 ### shell 关系运算符 只支持数字
@@ -150,6 +152,7 @@ b=$a                 # 赋值
 
 ### 文件测试 flag
 
+```
 语法 [ -flag $file ] 
 flag 包括：
 -b 块设备
@@ -165,7 +168,7 @@ flag 包括：
 -x 可执行
 -s 空（文件大小是否大于0）
 -e 文件（包括目录）是否存在
-
+```
 
 ### shell 语句
 
@@ -178,10 +181,71 @@ do
 done
 ```
 
+```
+for((i=1;i<=5;i++));
+do
+    echo "这是第 $i 次调用";
+done;
+```
+
 * if
+
 ```
 if [condition]
 then
 	do something
+else
+	do otherthing
 fi
+```
+
+```
+if condition1
+then
+    command1
+elif condition2 
+then 
+    command2
+else
+    commandN
+fi
+```
+
+* while
+
+``` 
+while condition
+do
+    command
+done
+```
+
+```
+int=1
+while(( $int<=5 ))
+do
+    echo $int
+    let "int++"
+done
+
+# 同样的作用不过是数字
+i=1  
+while((i<=5))  
+do  
+    echo $i  
+    let i++  
+done
+```
+
+* case
+
+```
+case val in
+pattern1)
+    command1
+    ;;
+pattern12）
+    command1
+    ;;
+esac
 ```
