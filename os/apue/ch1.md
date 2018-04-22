@@ -48,3 +48,73 @@ man 用于查看函数或命令的手册，其格式如下：
 8   系统管理命令(通常只针对 root 用户)
 9   内核例程 [非标准
 ```
+
+#### 输入和输出
+对于系统函数的 标准输入是 0 标准输出是 1 但是更常用的是 `unistd.h`下的`STDIN_FILENO`和`STDOUT_FILENO`两个宏
+
+对于库函数的 标注输入和输出是定义在 `stdio.h` 下面的 `stdin` 与 `stdout`
+
+复制文件的程序：
+
+非缓冲版本代码：
+
+```
+#include "../apue/apue.h"
+
+#define BUFFER_SIZE 4096
+
+int main()
+{
+    int n;
+    char buf[BUFFER_SIZE];
+    while((n = read(STDIN_FILENO,buf,BUFFER_SIZE)) > 0)
+    {
+        if(write(STDOUT_FILENO,buf,BUFFER_SIZE) != n)
+            err_sys("write error");   
+    }
+    if(n < 0)
+        err_sys("read error");
+
+    exit(0);
+}
+```
+
+缓冲版本:
+
+```
+#include "../apue/apue.h"
+
+int main()
+{
+    int c;
+
+    while((c = getc(stdin) != EOF))
+    {
+        if(putc(c,stdout) == EOF)
+            err_sys("write error");
+    }
+    if(ferror(stdin))
+        err_sys("input error");
+
+    exit(0);
+}
+
+```
+
+主要用到的函数为：`read()` `write()` `getc()` `putc()`
+
+#### 进程控制
+`getpid()` 返回进程的ID号，类型为`pid_t` 最大为长整形 `ld`
+
+`waitpid()` 等待子进程退出，一般出现在父进程中
+
+`fgets()` 一次读取一行，以换行为界限，当遇到结束符`Ctrl+d`时返回NULL
+
+`execpl()` 执行一个新的程序，要求参数以null结束而不是换行
+
+`fork()` 创建一个新的子进程，一次调用两次返回，对于子进程返回 0， 对于父进程返回子进程的pid。
+
+对于一个进程内的所有线程会共享同一个 地址空间 文件描述符 栈 以及进程相关属性，因此需要使用锁等机制来实现同步。
+
+线程也用ID标识，但是线程ID只在它所属的进程内起作用。
+
