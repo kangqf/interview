@@ -33,8 +33,6 @@
   * [ASIO](os/asio.md)
   * [文件系统](os/filesystem.md)
   * [加密方式](os/crypt.md)
-  * [apue](os/apue.md)
-    * [ch1](os/apue/ch1.md)
 * [数据库](db/db.md)
 * [计算机网络](net/net.md)
   * [HTTP](net/http.md)
