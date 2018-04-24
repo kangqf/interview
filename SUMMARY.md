@@ -71,6 +71,7 @@
     * [输入输出](linux/shell/io.md)
     * [sed](linux/shell/sed.md)
     * [awk](linux/shell/awk.md)
+    * [其他指令](linux/shell/others.md)
     * [shell 实战](linux/shell/shellinaction.md)
   * [常用的配置命令](linux/config.md)
 * [设计模式](design/design.md)
