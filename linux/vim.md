@@ -71,7 +71,7 @@ yi(  yank all text inside parentheses
 
 参考[https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/](https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/)
 
-### vim 原生按键
+### vim 快捷键
 
 #### 增
 `i` `I` `a` `A` `o` `O` 
@@ -89,7 +89,13 @@ yi(  yank all text inside parentheses
 `:%s/old/new/g`
 `:%s/old/new/gc`
 
+
+
 #### 复制粘贴
+
+"+y  <Leader>y
+
+"+p  <Leader>p
 
 #### 重做撤销
 `u` `U` `ctrl+r` 
@@ -107,20 +113,107 @@ yi(  yank all text inside parentheses
 #### 操作tag
 `Ctrl+i`  `Ctrl+o` `Ctrl+t` `g]` `ctrl+]`
 
-g] 罗列当前光标处的单词的所有候选标签列表
-ctrl+] 将光标处的单词所匹配的所有标签压入标签栈中
-;tn
-;tp
+`g]` 罗列当前光标处的单词的所有候选标签列表
+`ctrl+]` 将光标处的单词所匹配的所有标签压入标签栈中
+`;tn`  下一个标签
+`;tp`  上一个标签
 
 #### 书签
-'mark 引用书签， g'mark  跳到mark处
+`'m` 引用书签。 例如：`g'm`  跳到`mark==m`处
+
+* 独立书签
+书签名只能由字母（a-zA-Z）组成，长度最多不超过 2 个字母
+
+* 分类书签
+分类书签，书签名只能由可打印特殊字符（!@#$%^&*()）组成，长度只能有 1 个字符
+
+##### 书签可视化插件
+[vim-signature](https://github.com/kshenoy/vim-signature)
+
+`;mt` 开关书签可视化
+
+* 独立书签
+
+增删 `mx` `m,` `m.` `m-` `m<Space>` 遍历 `]反引` `[反引` 查 `;ms` `m/`
+
+```
+mx       在最左侧放置'x'书签
+m,       放置下一个可用的书签
+m.       如果当前行没有书签就反之下一个可用的书签，如果有就移除该书签
+m-       删除当前行的所有书签
+m<Space> 删除buffer 中的所有书签
+
+]`       跳到下一个书签
+[`       跳到上一个书签
+
+m/       打开当前buffer 中的所有书签的列表
+;ms      显示所有的书签列表，并且显示上下文内容
+```
 
 
+* 分类书签
+
+增删 `m[0-9]`  `m<S-[0-9]>`  `m<BS>` 遍历 `]-`  `[-`  `]=` `[=` 查 `m?`
+
+```
+m[0-9]      放置分类书签
+m<S-[0-9]>  移除一个类别的书签
+m<BS>       移除所有书签
+
+]-          跳到同类书签的下一行
+[-          跳到同类书签的上一行
+]=          跳到有分类书签下一行
+[=          跳到有分类书签上一行
+
+m?          打开当前buffer 中的所有分类书签的列表
+```
+
+#### 缩进与折叠
+
+
+Indent Guides  https://github.com/nathanaelkane/vim-indent-guides
+
+;ig
+
+<
+>
+=
+<<
+>>
+==
+
+
+`za` `zA` `zM` `zR` 
+
+<Leader>M %
+
+
+
+彩虹括号，不仅仅是括号
+https://github.com/luochen1990/rainbow
+
+
+
+#### 窗口移动
+nw <C‐W><C‐W>
+
+<Leader>lw <C‐W>l
+<Leader>hw <C‐W>h
+<Leader>kw <C‐W>k
+<Leader>jw <C‐W>j
+
+#### CPP 相关
+高亮插件
+[vim-cpp-enhanced-highlight](https://github.com/octol/vim-cpp-enhanced-highlight)
+
+
+
+实现与定义快速切换
+[vim-fswitch](https://github.com/derekwyatt/vim-fswitch)
+ <Leader>sw :FSHere<cr>
 
 
 #### 执行命令 与 宏
-
-
 `gQ`
 
 `p` `P` `gp` `gP`
@@ -130,7 +223,7 @@ ctrl+] 将光标处的单词所匹配的所有标签压入标签栈中
 
 `:help mode-switching`
 
-
+#### 其它骚操作
 
 
 
