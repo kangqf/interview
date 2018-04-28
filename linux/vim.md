@@ -89,8 +89,19 @@ q
 <Enter>
 
 
-#### 改
+#### 改 替换
 `r` `R`
+
+10. <Leader>R 不确认、非整词:bufdo 对打开文件进行替换
+11. <Leader>rw 不确认、整词:args **/.cpp **/.h 对工程内所有文件进行替换
+12. <Leader>rc 确认、非整词
+13. <Leader>rcw 确认、整词
+14. <Leader>rwc 确认、整词
+
+如果对打开文件进行替换，你需要先通过 :bufdo 命令显式告知 vim 范围，再执行替换；
+如果对工程内所有文件进行替换，先 :args **/.cpp **/.h 告知 vim 范围，再执行替换；
+
+:[range]s/{pattern}/{string}/[flags]
 `:s/thee/the`
 `:s/old/new/g`
 `:%s/old/new/g`
@@ -236,6 +247,12 @@ nw <C‐W><C‐W>
 <Leader>kw <C‐W>k
 <Leader>jw <C‐W>j
 
+#### 注释
+
+[NERD Commente](https://github.com/scrooloose/nerdcommenter)
+;cc
+;cu
+
 #### CPP 相关
 高亮插件
 [vim-cpp-enhanced-highlight](https://github.com/octol/vim-cpp-enhanced-highlight)
@@ -259,6 +276,9 @@ nw <C‐W><C‐W>
 
 #### 其它骚操作
 
+
+NERDtree （https://github.com/scrooloose/nerdtree ）插件可以查看文件列表
+MiniBufExplorer（https://github.com/fholgado/minibufexpl.vim 可以把所有 buffer 罗列出来
 
 
 v -> select -> : -> w test
