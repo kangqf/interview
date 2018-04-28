@@ -82,6 +82,13 @@ yi(  yank all text inside parentheses
 #### 查
 `f` `F` `t` `T` `/` `?` `*` `#` `%` 
 
+[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim)
+<Leader>sp :CtrlSF<CR>  search in project
+p
+q
+<Enter>
+
+
 #### 改
 `r` `R`
 `:s/thee/the`
@@ -89,7 +96,12 @@ yi(  yank all text inside parentheses
 `:%s/old/new/g`
 `:%s/old/new/gc`
 
+多光标操作
+[multiple-cursors 插件](https://github.com/terryma/vim-multiple-cursors)
+查找到多行，然后vaw 或viw 可视选中一个单词，Ctrl+n 然后 I 插入
 
+
+;rw 
 
 #### 复制粘贴
 
@@ -111,20 +123,42 @@ yi(  yank all text inside parentheses
 `Ctrl+g` `g+Ctrl+g`  
 
 #### 操作tag
-`Ctrl+i`  `Ctrl+o` `Ctrl+t` `g]` `ctrl+]`
+`Ctrl+i`  `Ctrl+t` `g]` `ctrl+]`
+`Ctrl+o`
+<Leader>tn :tnext<CR>
+<Leader>tp :tprevious<CR>
 
-`g]` 罗列当前光标处的单词的所有候选标签列表
-`ctrl+]` 将光标处的单词所匹配的所有标签压入标签栈中
-`;tn`  下一个标签
-`;tp`  上一个标签
+`g]`      罗列当前光标处的单词的所有候选标签列表
+`ctrl+]`  将光标处的单词所匹配的所有标签压入标签栈中
+`;tn`     下一个标签
+`;tp`     上一个标签
+
+ctags -R --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+liaS --extra=+q --language-force=c++
+:set tags+=/data/workplace/example/tags
+
+nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
+
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
+
+tag可视化插件
+[tagbar](https://github.com/majutsushi/tagbar)
+;tb
+s
+
+
+
+
 
 #### 书签
 `'m` 引用书签。 例如：`g'm`  跳到`mark==m`处
 
 * 独立书签
+
 书签名只能由字母（a-zA-Z）组成，长度最多不超过 2 个字母
 
 * 分类书签
+
 分类书签，书签名只能由可打印特殊字符（!@#$%^&*()）组成，长度只能有 1 个字符
 
 ##### 书签可视化插件
@@ -171,7 +205,7 @@ m?          打开当前buffer 中的所有分类书签的列表
 #### 缩进与折叠
 
 
-Indent Guides  https://github.com/nathanaelkane/vim-indent-guides
+[Indent Guides](https://github.com/nathanaelkane/vim-indent-guides)
 
 ;ig
 
@@ -189,7 +223,7 @@ Indent Guides  https://github.com/nathanaelkane/vim-indent-guides
 
 
 
-彩虹括号，不仅仅是括号
+彩虹括号，不仅仅是括号，包括各种匹配符号
 https://github.com/luochen1990/rainbow
 
 
