@@ -96,6 +96,19 @@ U 撤销所有操作
 `f` `F` `t` `T` `/` `?` `*` `#`
 
 
+```
+fx  移动到当前行向后查找到的第一个x
+Fx  移动到当前行向前查找到的第一个x
+t与f的区别在于t移动到字符位置之前，而f则直接移动到字符处
+
+```
+
+ 搜索 word
+模式：normal
+按键：*
+说明：光标在一个 word 中间时，按下星号 * 能向下搜索这个 word；之后再按 n 跳到下一个，N 跳到上一个匹配位置。
+引申：井号 # 向上搜索这个 word
+
 
 插件[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim)
 
@@ -124,6 +137,11 @@ q                       退出预览窗口
 `:%s/old/new/g`
 `:%s/old/new/gc`
 
+
+
+cc / S
+说明： 替换整行，也就是删除当前整行并进入 insert 模式。
+
 多光标操作
 [multiple-cursors 插件](https://github.com/terryma/vim-multiple-cursors)
 查找到多行，然后vaw 或viw 可视选中一个单词，Ctrl+n 然后 I 插入
@@ -143,9 +161,12 @@ q                       退出预览窗口
 #### 移动光标
 `w` `b` `e` `ge` `$` `g_` `0` `^` 
  
-`h` `j` `k` `l`
+`h` `j` `k` `l` H L M
  
 `G` `gg` `5gg` `+` `-` `(` `)` `{` `}`  `Ctrl+u` `Ctrl+d` 
+
+<C-f> / <C-u>
+说明：向下/向上翻页
 
 #### 查看文件信息
 `Ctrl+g` `g+Ctrl+g`  
@@ -155,6 +176,16 @@ q                       退出预览窗口
 `Ctrl+o`
 <Leader>tn :tnext<CR>
 <Leader>tp :tprevious<CR>
+
+
+跳到上一位置
+模式：normal
+按键：`'
+说明： 跳到上一个位置，会更新 jump 的历史，也就是说，多次使用该命令会在两个位置之间跳来跳去。
+引申：<C-o> 也可以跳到上一个位置，不过它不会更新 jump 历史，会一直跳到文件关闭为止。
+
+
+
 
 `g]`      罗列当前光标处的单词的所有候选标签列表
 `ctrl+]`  将光标处的单词所匹配的所有标签压入标签栈中
@@ -264,6 +295,9 @@ nw <C‐W><C‐W>
 <Leader>jw <C‐W>j
 ```
 
+`sp` 将当前窗口分割为两个，当然每个窗口的 buffer 还是同一个文件
+
+
 #### 注释
 
 插件[NERD Commente](https://github.com/scrooloose/nerdcommenter)
@@ -309,8 +343,14 @@ bi b到单词开头插入
 gea ge到单词尾进行添加
 
 
+sudo 保存
+模式：normal
+按键：:w !sudo tee %
+说明：不小心打开了一个需要 sudo 的文件，而且做了不少更改
 
 
+<C-[>
+说明：返回到 normal 模式，等于按下 esc。
 
 ```
 
