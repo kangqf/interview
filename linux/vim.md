@@ -74,29 +74,46 @@ yi(  yank all text inside parentheses
 ### vim 快捷键
 
 #### 增
+
 `i` `I` `a` `A` `o` `O` 
 
+```
+I 在行首
+A 在行尾
+O 在上一行
+```
+
 #### 删
-`x` `X` `dd` `D`   
+`x` `X` `dd` `D` `u` `U`   
+
+```
+X 删除前面
+D 删除到结尾
+U 撤销所有操作
+```
 
 #### 查
-`f` `F` `t` `T` `/` `?` `*` `#` `%` 
+`f` `F` `t` `T` `/` `?` `*` `#`
 
-[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim)
-<Leader>sp :CtrlSF<CR>  search in project
-p
-q
-<Enter>
 
+
+插件[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim)
+
+```
+<Leader>sp :CtrlSF<CR>  整个工程内查找
+p                       得到搜索结果预览后按p 查看上下文源码
+q                       退出预览窗口
+<Enter>                 跳到搜索到的位置
+```
 
 #### 改 替换
 `r` `R`
 
-10. <Leader>R 不确认、非整词:bufdo 对打开文件进行替换
-11. <Leader>rw 不确认、整词:args **/.cpp **/.h 对工程内所有文件进行替换
-12. <Leader>rc 确认、非整词
-13. <Leader>rcw 确认、整词
-14. <Leader>rwc 确认、整词
+<Leader>R 不确认、非整词:bufdo 对打开文件进行替换
+<Leader>rw 不确认、整词:args **/.cpp **/.h 对工程内所有文件进行替换
+<Leader>rc 确认、非整词
+<Leader>rcw 确认、整词
+<Leader>rwc 确认、整词
 
 如果对打开文件进行替换，你需要先通过 :bufdo 命令显式告知 vim 范围，再执行替换；
 如果对工程内所有文件进行替换，先 :args **/.cpp **/.h 告知 vim 范围，再执行替换；
@@ -215,53 +232,54 @@ m?          打开当前buffer 中的所有分类书签的列表
 
 #### 缩进与折叠
 
+`<` `>` `=` `<<` `>>` `==` `za` `zA` `zM` `zR` `%`
 
-[Indent Guides](https://github.com/nathanaelkane/vim-indent-guides)
-
-;ig
-
-<
->
-=
-<<
->>
-==
-
-
-`za` `zA` `zM` `zR` 
-
+```
+za 打开或关闭当前折叠
+zA 打开或关闭所有的折叠
+zM 关闭所有折叠
+zR 打开所有折叠
 <Leader>M %
+```
+
+插件[Indent Guides](https://github.com/nathanaelkane/vim-indent-guides)
+
+`;ig` 显示或关闭缩进
 
 
+彩虹括号[rainbow](https://github.com/luochen1990/rainbow)
 
-彩虹括号，不仅仅是括号，包括各种匹配符号
-https://github.com/luochen1990/rainbow
+不仅仅是括号，包括各种匹配符号
 
 
 
 #### 窗口移动
+
+```
 nw <C‐W><C‐W>
 
 <Leader>lw <C‐W>l
 <Leader>hw <C‐W>h
 <Leader>kw <C‐W>k
 <Leader>jw <C‐W>j
+```
 
 #### 注释
 
-[NERD Commente](https://github.com/scrooloose/nerdcommenter)
-;cc
-;cu
+插件[NERD Commente](https://github.com/scrooloose/nerdcommenter)
+
+```
+;cc  注释当前行或选中部分
+;cu  取消注释当前行或选中部分
+```
 
 #### CPP 相关
-高亮插件
-[vim-cpp-enhanced-highlight](https://github.com/octol/vim-cpp-enhanced-highlight)
 
+高亮插件[vim-cpp-enhanced-highlight](https://github.com/octol/vim-cpp-enhanced-highlight)
 
+实现与定义快速切换[vim-fswitch](https://github.com/derekwyatt/vim-fswitch)
 
-实现与定义快速切换
-[vim-fswitch](https://github.com/derekwyatt/vim-fswitch)
- <Leader>sw :FSHere<cr>
+`<Leader>sw :FSHere<cr>`
 
 
 #### 执行命令 与 宏
@@ -295,14 +313,9 @@ gea ge到单词尾进行添加
 
 
 ```
-x 光标上 
-X 光标前
+
 U 撤销所有
-D 光标到行尾
-I 行头插入
-A 行尾插入
-o 上面 加行
-O 下面加行
+
 w 首 后
 b 首 前
 e 尾 后
