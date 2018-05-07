@@ -117,46 +117,74 @@ q                       退出预览窗口
 #### 改 替换
 `r` `R`
 
-<Leader>R 不确认、非整词:bufdo 对打开文件进行替换
-<Leader>rw 不确认、整词:args **/.cpp **/.h 对工程内所有文件进行替换
-<Leader>rc 确认、非整词
-<Leader>rcw 确认、整词
-<Leader>rwc 确认、整词
 
-如果对打开文件进行替换，你需要先通过 :bufdo 命令显式告知 vim 范围，再执行替换；
-如果对工程内所有文件进行替换，先 :args **/.cpp **/.h 告知 vim 范围，再执行替换；
+vim 自带的替换
 
-:[range]s/{pattern}/{string}/[flags]
-`:s/thee/the`
-`:s/old/new/g`
-`:%s/old/new/g`
-`:%s/old/new/gc`
+`:[range]s/{pattern}/{string}/[flags]`
+
+```
+:s/thee/the       替换当前行第一个 thee 为 the
+:s/old/new/g      替换当前行所有的 old 为 new
+:%s/old/new       替换当前文件的所有行的第一个 old 为 new
+:%s/old/new/g     替换当前文件的所有行的 old 为 new
+:%s/old/new/gc    替换当前文件的所有行的 lod 为 new 并且每次需要确认
+:bufdo            对打开文件进行替换
+:args **/.cpp **/.h 对工程内所有文件进行替换
+```
+
+封装的函数
+
+```
+<Leader>R    不确认、非整词 
+<Leader>rw   不确认、整词    
+<Leader>rc   确认、非整词
+<Leader>rcw  确认、整词
+<Leader>rwc  确认、整词
+```
+
+`cc` 或 `S`  替换整行，也就是删除当前整行并进入 insert 模式。
+
+多光标操作，使用插件：[multiple-cursors 插件](https://github.com/terryma/vim-multiple-cursors)
+
+```
+Ctrl+n  选中下一个
+Ctrl+p  选中上一个
+Ctrl+x  跳过
+```
 
 
+使用多光标的方式一般是
 
-cc / S
-说明： 替换整行，也就是删除当前整行并进入 insert 模式。
+`;sp` 查找到多行，然后 `vaw` 或 `viw` 可视选中一个单词，`Ctrl+n` 选中后面的，然后 `shift+i` 插入多个位置，按下 ESC 然后保存。
 
-多光标操作
-[multiple-cursors 插件](https://github.com/terryma/vim-multiple-cursors)
-查找到多行，然后vaw 或viw 可视选中一个单词，Ctrl+n 然后 I 插入
+也可以 `vip` 选中一个段落，然后 `Ctrl+n` 选中行首，`i`在行首插入内容
+
+也可以 `fx`找到第一个x 然后 `Ctrl+n` 选中多个x，然后 `shift+i` 插入新的内容 
 
 
-;rw 
+ 
 
 #### 复制粘贴
 
-"+y  <Leader>y
-
-"+p  <Leader>p
+```
+"+y  <Leader>y   复制内容到系统剪贴板
+"+p  <Leader>p   粘贴系统剪贴板到vim
+```
 
 #### 重做撤销
 `u` `U` `ctrl+r` 
+
+```
+U   撤销到最前的更改
+```
 
 #### 移动光标
 `w` `b` `e` `ge` `$` `g_` `0` `^` 
  
 `h` `j` `k` `l` H L M
+
+H 当前开始
+L 
  
 `G` `gg` `5gg` `+` `-` `(` `)` `{` `}`  `Ctrl+u` `Ctrl+d` 
 
