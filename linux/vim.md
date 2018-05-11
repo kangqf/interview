@@ -84,7 +84,8 @@ O 在上一行
 ```
 
 #### 删
-`x` `X` `dd` `D` `u` `U`   
+`x` `X` `dd` `D` `u` `U` `ctrl+r` 
+
 
 ```
 X 删除前面
@@ -147,9 +148,9 @@ vim 自带的替换
 多光标操作，使用插件：[multiple-cursors 插件](https://github.com/terryma/vim-multiple-cursors)
 
 ```
-Ctrl+n  选中下一个
-Ctrl+p  选中上一个
-Ctrl+x  跳过
+Ctrl+n -> Shift+n 选中下一个 
+Ctrl+p            选中上一个
+Ctrl+x            跳过
 ```
 
 
@@ -162,8 +163,6 @@ Ctrl+x  跳过
 也可以 `fx`找到第一个x 然后 `Ctrl+n` 选中多个x，然后 `shift+i` 插入新的内容 
 
 
- 
-
 #### 复制粘贴
 
 ```
@@ -171,65 +170,71 @@ Ctrl+x  跳过
 "+p  <Leader>p   粘贴系统剪贴板到vim
 ```
 
-#### 重做撤销
-`u` `U` `ctrl+r` 
+#### 查看文件信息
+`Ctrl+g` `g+Ctrl+g`  前者查看概要信息，后者查看详细的信息
 
-```
-U   撤销到最前的更改
-```
 
 #### 移动光标
 `w` `b` `e` `ge` `$` `g_` `0` `^` 
  
-`h` `j` `k` `l` H L M
+`h` `j` `k` `l` `H` `L` `M`
 
-H 当前开始
-L 
- 
 `G` `gg` `5gg` `+` `-` `(` `)` `{` `}`  `Ctrl+u` `Ctrl+d` 
 
-<C-f> / <C-u>
-说明：向下/向上翻页
 
-#### 查看文件信息
-`Ctrl+g` `g+Ctrl+g`  
+
+```
+w 单词前，后一般跟i
+e 单词后，后跟a
+b 后跟 i
+ge 后跟 a
+``` 
+
+```
+H 前半段
+L 后半段
+M 中间段
+```
+
+```
++         == j
+-         == k
+Ctrl+u   上翻页
+Ctrl+d   下翻页 一次半屏
+Ctrl+f   下翻页 一次一屏    
+( )      句子
+{ }      段落
+```
+
 
 #### 操作tag
-`Ctrl+i`  `Ctrl+t` `g]` `ctrl+]`
-`Ctrl+o`
-<Leader>tn :tnext<CR>
-<Leader>tp :tprevious<CR>
+`Ctrl+i` `Ctrl+t` `Ctrl+o` `g]` `ctrl+]` 
 
+```
+Ctrl+i  再次进入tag
+Ctrl+t  返回上个标签
+Ctrl+o  返回光标上次停留行，不会更新 jump 历史
+`       跳到上一个位置，会更新 jump 的历史
+g]      罗列当前光标处的单词的所有候选标签列表
+ctrl+]  将光标处的单词所匹配的所有标签压入标签栈中  
+```
 
-跳到上一位置
-模式：normal
-按键：`'
-说明： 跳到上一个位置，会更新 jump 的历史，也就是说，多次使用该命令会在两个位置之间跳来跳去。
-引申：<C-o> 也可以跳到上一个位置，不过它不会更新 jump 历史，会一直跳到文件关闭为止。
+引入tag
 
-
-
-
-`g]`      罗列当前光标处的单词的所有候选标签列表
-`ctrl+]`  将光标处的单词所匹配的所有标签压入标签栈中
-`;tn`     下一个标签
-`;tp`     上一个标签
-
+```
 ctags -R --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+liaS --extra=+q --language-force=c++
 :set tags+=/data/workplace/example/tags
-
-nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-
-nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+```
 
 
-tag可视化插件
-[tagbar](https://github.com/majutsushi/tagbar)
-;tb
-s
+tag可视化插件 [tagbar](https://github.com/majutsushi/tagbar)
 
-
-
+```
+;tb                        打开关闭tag 的可视化
+s                          切换tag的排序方式
+<Leader>tn :tnext<CR>      下一个标签
+<Leader>tp :tprevious<CR>  上一个标签
+```
 
 
 #### 书签
@@ -318,8 +323,21 @@ nw <C‐W><C‐W>
 <Leader>jw <C‐W>j
 ```
 
-`sp` 将当前窗口分割为两个，当然每个窗口的 buffer 还是同一个文件
-
+```
+<C‐W>s     将当前窗口分割为水平两个
+<C‐W>v     将当前窗口分割为垂直两个
+<C‐W>q     关闭当前窗口
+<C‐W>w     遍历窗口
+<C‐W>t     移动到最左上角的窗口
+<C‐W>b     移动到最右下角的窗口
+<C‐W>p     移动到前一个访问的窗口
+<C‐W>=     让所有窗口调整至相同尺寸（平均划分）
+<C‐W>-     将当前窗口的高度减少一行
+<C‐W>+     将当前窗口的高度增加一行
+<C‐W><     将当前窗口的宽度减少
+<C‐W>>     将当前窗口的宽度增加
+<C‐W>|     将当前窗口的宽度调到最大
+```
 
 #### 注释
 
@@ -337,7 +355,6 @@ nw <C‐W><C‐W>
 实现与定义快速切换[vim-fswitch](https://github.com/derekwyatt/vim-fswitch)
 
 `<Leader>sw :FSHere<cr>`
-
 
 #### 执行命令 与 宏
 `gQ`
