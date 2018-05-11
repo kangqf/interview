@@ -168,6 +168,8 @@ Ctrl+x            跳过
 ```
 "+y  <Leader>y   复制内容到系统剪贴板
 "+p  <Leader>p   粘贴系统剪贴板到vim
+gp               在当前行的下一行进行粘贴，等价于 p 然后移动到下一行
+gP               在上一行粘贴 等价于 P 然后移动到下一行
 ```
 
 #### 查看文件信息
@@ -357,68 +359,24 @@ nw <C‐W><C‐W>
 `<Leader>sw :FSHere<cr>`
 
 #### 执行命令 与 宏
-`gQ`
-
-`p` `P` `gp` `gP`
-
- `:!`
-
-
-`:help mode-switching`
+`gQ`    进入Ex模式
+ `:!`   执行命令 如 :!ls
 
 #### 其它骚操作
 
+[NERDtree](https://github.com/scrooloose/nerdtree) 插件可以查看文件列表
 
-NERDtree （https://github.com/scrooloose/nerdtree ）插件可以查看文件列表
-MiniBufExplorer（https://github.com/fholgado/minibufexpl.vim 可以把所有 buffer 罗列出来
-
-
-v -> select -> : -> w test
-
-:r !ls  把 ls 得到的数据添加到当前文件
-
-ea e到单词结尾进行添加
-wi w到单词开头插入
-bi b到单词开头插入
-gea ge到单词尾进行添加
+[MiniBufExplorer](https://github.com/fholgado/minibufexpl.vim) 可以把所有 buffer 罗列出来
 
 
-sudo 保存
-模式：normal
-按键：:w !sudo tee %
-说明：不小心打开了一个需要 sudo 的文件，而且做了不少更改
+`v -> select -> : -> w test`   把选中的内容复制到文件
+
+`:r !ls`         把 ls 得到的数据添加到当前文件，可以用来把命令的结果写入到当前文件
+
+`:w !sudo tee %` 不小心打开了一个需要 sudo 的文件，而且做了不少更改，同步更改
+
+`<C-[>`          返回到 normal 模式，等于按下 esc。
 
 
-<C-[>
-说明：返回到 normal 模式，等于按下 esc。
 
-```
 
-U 撤销所有
-
-w 首 后
-b 首 前
-e 尾 后
-ge 尾 前
-0 首
-^ 首非空
-$ 尾 
-g_ 尾非空
-5G = 5gg
-- 上一行第一个非空字符
-+ 下一行第一个非空字符
-( 后句子
-) 前句子
-{ 后段落
-} 前段落
-Ctrl+u  上翻页
-Ctrl+d  下翻页
-Ctrl+g  显示详细信息 x Ctrl+g  /  g Ctrl+g
-gp 命令是在当前行的下一行进行粘贴，并将光标移动到新插入行的下一行的开头处
-gq 进入Ex模式
-f 
-F 
-t 
-T
-
-```
