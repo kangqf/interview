@@ -37,6 +37,7 @@
   * [进程同步](os/syncpro.md)
   * [apue](os/apue.md)
     * [ch1](os/apue/ch1.md)
+    * [ch2](os/apue/ch2.md)
 * [数据库](db/db.md)
  * [SQL](db/sql.md)
  * [索引](db/index.md)
