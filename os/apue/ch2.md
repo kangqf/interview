@@ -155,7 +155,7 @@ int main()
 
 ##### POSIX 限制
 
-
+POSIX 包含了 ISO C 的限制，并定义了自己的限制
 
 
 
