@@ -155,10 +155,87 @@ int main()
 
 ##### POSIX 限制
 
-POSIX 包含了 ISO C 的限制，并定义了自己的限制
+POSIX 包含了 ISO C 的限制，并定义了自己的限制，这些限制很多涉及到了操作系统的实现。包括下面几个部分：
+
+1. 数值限制：`LONG_BIT` `SSIZE_MAX` `WORD_BIT`
+2. 最大值： `_POSIX_CLOCKERS_MIN`
+3. 25 个最小值
+4. 运行时不变值
+
+* 25个最小值
+POSIX 定义了实现要求的最小的值，这些值时最小的要求，尽管它们的名字里面大多含有一个 MAX ，而真实的实现的最小值一般都会比规定的最小值要大，实际实现的名字一般都是去除 `_POSIX_` 后得到的名字。
+
+例如 要得到exec函数的参数的长度的规定的最小值和实际实现的最小值可以实用下面的代码：
+
+``` c
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("_POSIX_ARG_MAX %d\n",_POSIX_ARG_MAX);
+    printf("ARG_MAX %d",ARG_MAX);
+    
+    exit(0);
+}
+```
+
+##### 运行时限制
+
+```
+#include <unistd.h>
+long sysconf(int name);
+long pathconf(const char *path, int name);
+long fpathconf(int fd, int name);
+```
+如果 name 时不合法的，则返回 -1 并且设置errno 为 EINVAL，对于部分那么函数也会 返回 -1 提示该限制时不确定的，但时不会改变 errno
+
+重复上面的例子：
+
+``` c
+
+#include <unistd.h>
+#include <limits.h>
+#include <stdio.h>
+
+int main()
+{
+    printf("ARG_MAX %ld\n",sysconf(ARG_MAX));    
+    printf("ARG_MAX %ld",pathconf(".",ARG_MAX));    
+}
+
+```
 
 
+##### 基本系统数据类型
+头文件 `<sys/types.h>` 定义了某些与实现有关的数据类型，被称为基本系统数据类型。具体如下：
 
-
-
+````
+-------------------------------------------------
+| 类型             |     说明                   |
+|==================|============================|
+| clock_t          | 时钟滴答计数器             |
+| comp_t           | 压缩的时间滴答             |
+| dev_t            | 设备号                     |
+| fd_set           | 文件描述符集               |
+| fpos_t           | 文件位置                   |
+| gid_t            | 数值组id                   |
+| ino_t            | i节点编号                  |
+| mode_t           | 文件类型，文件创建模式     |      
+| nlink_t          | 目录项链接计数             |
+| off_t            | 文件长度和偏移量           |
+| pid_t            | 进程ID 和 进程组 ID        |  
+| pthread_t        | 线程 ID                    |
+| ptrdiff_t        | 两个指针相减的结果         |     
+| rlim_t           | 资源限制                   |
+| sig_atomic_t     | 能原子访问的数据类型       |          
+| sigset_t         | 信号集                     |
+| size_t           | 对象的长度                 |
+| ssize_t          | 返回字节计数的函数         |   
+| time_t           | 日历时间的秒计数器         |  
+| uid_t            | 数值用户ID                 |
+| wchar_t          | 能表示所有不同的字符码     |
+-------------------------------------------------
+```
 
