@@ -353,32 +353,30 @@
 
     给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
 
-``` cpp
-class Solution {
-public:
-    double Power(double base, int exponent) {
-        bool neg = exponent > 0 ? 0 : 1;
-        bool ood = exponent % 2;
-        exponent = abs(exponent);
-        double re = base;
-        if(exponent == 0)
-            re = 1;
-        else if(exponent != 1)
-        {
-            while(exponent>1)
+    ``` cpp
+    class Solution {
+    public:
+        double Power(double base, int exponent) {
+            bool neg = exponent > 0 ? 0 : 1;
+            bool ood = exponent % 2;
+            exponent = abs(exponent);
+            double re = base;
+            if(exponent == 0)
+                re = 1;
+            else if(exponent != 1)
             {
-                re = re*re;
-                exponent/=2;
+                while(exponent>1)
+                {
+                    re = re*re;
+                    exponent/=2;
+                }
+                if(ood)
+                    re = re*base;
             }
-            if(ood)
-                re = re*base;
+            return neg ? 1/re : re;
         }
-        
-        
-        return neg ? 1/re : re;
-    }
-};
-```
+    };
+    ```
 
 13. 调整数组顺序使奇数位于偶数前面
 
@@ -446,7 +444,6 @@ public:
     #include <iostream>
     
     using namespace std;
-    
     
     struct ListNode {
         int val;
@@ -902,8 +899,7 @@ public:
                 node->next = tmp;
                 node = tmp->next;
             }
-    
-                
+
             node = pHead;
             
             while(node != nullptr)
@@ -923,7 +919,6 @@ public:
                 node = nodeClo;
             }
             return pHeadClo;
-            
         }
     };
     ```
@@ -998,7 +993,6 @@ public:
                     return;
                 }
     
-    
                 if( i != index && str[i] == str[index])
                     continue;
                 swap(str[index],str[i]);
@@ -1006,8 +1000,6 @@ public:
                     perm(re,str,index+1);
                 swap(str[index],str[i]);
             }
-    
-    
         }
         vector<string> Permutation(string str) {
             vector<string> re;
@@ -1018,7 +1010,6 @@ public:
             perm(re,str,0);
             sort(re.begin(),re.end());
             return re;
-            
         }
     };
     ```
@@ -2312,7 +2303,6 @@ public:
         }
     };
     
-    
     char* Serialize(TreeNode *root)
     {
     //    return "1,22,#10,##33,#11,##";
@@ -2371,8 +2361,6 @@ public:
     {
         return _Deserialize(&str);
     }
-    
-    
     
     int main(int argc, char *argv[])
     {
@@ -2527,10 +2515,7 @@ public:
                     return true;
             }
             return false;
-    
         }
-    
-    
     };
     ```
 
