@@ -353,32 +353,32 @@
 
     给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
 
-    ``` cpp
-    class Solution {
-    public:
-        double Power(double base, int exponent) {
-            bool neg = exponent > 0 ? 0 : 1;
-            bool ood = exponent % 2;
-            exponent = abs(exponent);
-            double re = base;
-            if(exponent == 0)
-                re = 1;
-            else if(exponent != 1)
+``` cpp
+class Solution {
+public:
+    double Power(double base, int exponent) {
+        bool neg = exponent > 0 ? 0 : 1;
+        bool ood = exponent % 2;
+        exponent = abs(exponent);
+        double re = base;
+        if(exponent == 0)
+            re = 1;
+        else if(exponent != 1)
+        {
+            while(exponent>1)
             {
-                while(exponent>1)
-                {
-                    re = re*re;
-                    exponent/=2;
-                }
-                if(ood)
-                    re = re*base;
+                re = re*re;
+                exponent/=2;
             }
-            
-            
-            return neg ? 1/re : re;
+            if(ood)
+                re = re*base;
         }
-    };
-    ```
+        
+        
+        return neg ? 1/re : re;
+    }
+};
+```
 
 13. 调整数组顺序使奇数位于偶数前面
 
