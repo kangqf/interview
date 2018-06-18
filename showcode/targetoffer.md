@@ -2412,8 +2412,6 @@
             int count = 0;
             return dfs(pRoot, k, count);
         }
-    
-        
     };
     ```
 
