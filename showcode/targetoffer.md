@@ -2370,7 +2370,6 @@
         head->right = new TreeNode(33);
         head->right->right = new TreeNode(11);
     
-    
         char *re = Serialize(head);
         TreeNode *node = Deserialize(re);
     }
@@ -2576,19 +2575,4 @@
         }
     };
     ```
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-	
-	
 
