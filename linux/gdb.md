@@ -22,6 +22,7 @@ info locals   显示当前堆栈页的所有变量
 #### 断点操作
 ```
 info b  查看所有的断点
+info watchpoints 查看所有的监视点
 enable <num>  使能断点号为num的断点
 disable <num> 失能断点号为num的断点
 delete <num>  删除断点号为num的断点
@@ -42,9 +43,12 @@ print fun(a) 将以变量 a(也可以自己指定变量) 作为参数调用 fun(
 call fun(a)  模拟调用函数fun
 bt backtrace 显示当前调用堆栈
 up/down      改变堆栈显示的深度
-set args     参数:指定运行时的参数
+set args arg list    指定运行时的参数
 show args    查看设置好的参数
-info program 来查看程序的是否在运行，进程号，被暂停的原因。
+set env var string     设置环境变量
+show env var    查看环境变量
+info program 来查看程序的是否在运行，进程号，被暂停的原因
+info address <s> 查看符号s的地址
 ```
 
 
