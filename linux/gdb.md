@@ -1,5 +1,9 @@
 ## GDB 调试
-
+```
+gdb <program>                  调试程序
+gdb <program> <core dump file> 调试coredump
+gdb <program> <PID>            调试服务程序
+```
 ### 常规操作
 ```
 l      查看源码  list
@@ -14,9 +18,10 @@ p <var> 查看变量值 print
 q       退出
 whatis <var>  查看变量类型，包含函数变量
 watch <var>   监视某个变量，一旦其值发生变化就会输出提示
-display <var> 每次回车都会输出该变量的值
+display <var> 每次程序暂停时都会输出该变量的值
 bt/where      显示当前的堆栈列表 
 info locals   显示当前堆栈页的所有变量
+search <text> 在源代码中搜索文本
 ```
 
 #### 断点操作
