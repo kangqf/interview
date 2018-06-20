@@ -6,6 +6,7 @@ l      查看源码  list
 b <n>  打断点 break
 r      运行到断点 run
 c      下一个断点 continue
+until <n> 运行到指定的行号
 n      单步执行 next
 s      单步跳入 step into
 finish 跳出子函数
@@ -14,7 +15,7 @@ q       退出
 whatis <var>  查看变量类型，包含函数变量
 watch <var>   监视某个变量，一旦其值发生变化就会输出提示
 display <var> 每次回车都会输出该变量的值
-bt/where      显示当前的堆栈列表
+bt/where      显示当前的堆栈列表 
 info locals   显示当前堆栈页的所有变量
 ```
 
@@ -37,7 +38,13 @@ l <fname> 查看函数源码
 
 #### 其他的骚操作
 ```
-print fun(a)：将以变量 a(也可以自己指定变量) 作为参数调用 fun() 函数
+print fun(a) 将以变量 a(也可以自己指定变量) 作为参数调用 fun() 函数
+call fun(a)  模拟调用函数fun
+bt backtrace 显示当前调用堆栈
+up/down      改变堆栈显示的深度
+set args     参数:指定运行时的参数
+show args    查看设置好的参数
+info program 来查看程序的是否在运行，进程号，被暂停的原因。
 ```
 
 
