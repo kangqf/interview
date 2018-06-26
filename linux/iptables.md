@@ -20,7 +20,7 @@
     3. REGECT
 * match
     1. -i
-    2. -p -m -g -j -s -d -o -t -A -D -R -L -v -P -I -F 
+    2. -p -m -g -j -s -d -o -t -A -D -R -L -v -P -I -F -N --dport --sport
 
 对于filter来讲一般只能做在3个链上：INPUT ，FORWARD ，OUTPUT
 对于nat来讲一般也只能做在3个链上：PREROUTING ，OUTPUT ，POSTROUTING
@@ -28,7 +28,9 @@
     
     
 
-chains prerouting input forward output postrouting
+iptables -F  # 清空所有的防火墙规则
+iptables -X  # 删除用户自定义的空链
+iptables -Z  # 清空计数
 
 rules reject accept drop snat masquerade dnat 
 
