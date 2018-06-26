@@ -19,6 +19,7 @@
     1. ACCEPT
     2. DROP
     3. REGECT
+    4. SNAT DNAT MASQUERADE
     
 * match
     1. -i
