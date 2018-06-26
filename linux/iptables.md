@@ -4,11 +4,30 @@
 * tables  
     1. mangle    内容处理表，对内容进行封包和拆包
     2. raw       原生的数据包
-    3. filter   转发表
+    3. filter    转发表
     4. nat       地址转换表
 * chain
-    1. 1
-    2. 2
+    1. PREROUTING
+    2. INPUT
+    3. FORWARD
+    4. OUTPUT
+    5. POSTROUTING
+    
+    
+* target
+    1. ACCEPT
+    2. DROP
+    3. REGECT
+* match
+    1. -i
+    2. -p -m -g -j -s -d -o -t -A -D -R -L -v -P -I -F 
+
+对于filter来讲一般只能做在3个链上：INPUT ，FORWARD ，OUTPUT
+对于nat来讲一般也只能做在3个链上：PREROUTING ，OUTPUT ，POSTROUTING
+而mangle则是5个链都可以做：PREROUTING，INPUT，FORWARD，OUTPUT，POSTROUTING
+    
+    
+
 chains prerouting input forward output postrouting
 
 rules reject accept drop snat masquerade dnat 
