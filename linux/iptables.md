@@ -7,17 +7,19 @@
     3. filter    转发表
     4. nat       地址转换表
 * chain
-    1. PREROUTING
+    1. PREROUTING  lu
     2. INPUT
     3. FORWARD
     4. OUTPUT
     5. POSTROUTING
     
-    
+
+
 * target
     1. ACCEPT
     2. DROP
     3. REGECT
+    
 * match
     1. -i
     2. -p -m -g -j -s -d -o -t -A -D -R -L -v -P -I -F -N --dport --sport
