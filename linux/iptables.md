@@ -24,22 +24,22 @@
     6. MASQUERADE
     
 * match
-    1. -i input interface  指定该接口后会限制链的类型为：INPUT PREROUTING FORWARD
+    1. -t table 指定该选项也会限制链的类型 filter(INPUT FORWARD OUTPUT) nat(PREROUTING OUTPUT POSTROUTING) mangle(ALL)
     2. -o output interface 指定该接口后会限制链的类型为：OUTPUT POSTROUTING FORWARD
-    3. -t table 指定该选项也会限制链的类型 filter(INPUT FORWARD OUTPUT) nat(PREROUTING OUTPUT POSTROUTING) mangle(ALL)
+    3. -i input interface  指定该接口后会限制链的类型为：INPUT PREROUTING FORWARD
     4. -s src
     5. -d dst
-    6. -A Append
+    6. -p protol
     7. -D Delete
     8. -R num replace
     9. -I [num] Insert 插入到第num条处
-    10. -L List
+    10. -A Append
     11. -j jump
     12. -g goto
-    13. -p protol
+    13. -L List
     14. 
     
-    2. -p -m -g -j -A -D -R -L -v -P -I -F -N --dport --sport
+    2.  -m   -v -P  -F -N --dport --sport
 
     
     
