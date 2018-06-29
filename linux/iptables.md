@@ -7,7 +7,7 @@
     3. filter    转发表
     4. nat       地址转换表
 * chain
-    1. PREROUTING  lu
+    1. PREROUTING  
     2. INPUT
     3. FORWARD
     4. OUTPUT
@@ -22,12 +22,13 @@
     4. SNAT DNAT MASQUERADE
     
 * match
-    1. -i
+    1. -i input interface  指定该接口后会限制链的类型为：INPUT PREROUTING FORWARD
+    2. -o output interface 指定该接口后会限制链的类型为：OUTPUT POSTROUTING FORWARD
+    3. -t table 指定该选项也会限制链的类型 filter(INPUT FORWARD OUTPUT) nat(PREROUTING OUTPUT POSTROUTING) mangle(ALL)
+    
+    
     2. -p -m -g -j -s -d -o -t -A -D -R -L -v -P -I -F -N --dport --sport
 
-对于filter来讲一般只能做在3个链上：INPUT ，FORWARD ，OUTPUT
-对于nat来讲一般也只能做在3个链上：PREROUTING ，OUTPUT ，POSTROUTING
-而mangle则是5个链都可以做：PREROUTING，INPUT，FORWARD，OUTPUT，POSTROUTING
     
     
 
