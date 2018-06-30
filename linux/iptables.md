@@ -30,23 +30,26 @@
     4. -s src
     5. -d dst
     6. -p protol
+    6. --dport 目的端口
+    6. --sport 源端口
+    18. -m match
+    11. -j jump
+    12. -g goto
+* operator
     7. -D Delete
     8. -R num replace
     9. -I [num] Insert 插入到第num条处
     10. -A Append
-    11. -j jump
-    12. -g goto
+
     13. -L List
-    14. 
-    
-    2.  -m   -v -P  -F -N --dport --sport
+    13. -v 查看统计信息
+    14. -F 清空所有的防火墙规则
+    15. -X 删除用户自定义的空链
+    16. -Z 清空计数
+    17. -P 设置默认策略
+    19. -N new
 
-    
-    
 
-iptables -F  # 清空所有的防火墙规则
-iptables -X  # 删除用户自定义的空链
-iptables -Z  # 清空计数
 
 rules reject accept drop snat masquerade dnat 
 
