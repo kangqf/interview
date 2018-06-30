@@ -15,7 +15,7 @@
     
 
 
-* target
+* target(rules)
     1. ACCEPT
     2. DROP
     3. REGECT
@@ -40,7 +40,6 @@
     8. -R num replace
     9. -I [num] Insert 插入到第num条处
     10. -A Append
-
     13. -L List
     13. -v 查看统计信息
     14. -F 清空所有的防火墙规则
@@ -49,15 +48,10 @@
     17. -P 设置默认策略
     19. -N new
 
+### 实际操作
 
-
-rules reject accept drop snat masquerade dnat 
-
-protol
-
-dport
-
-
- sudo iptables -A FORWARD -i ppp0  -p udp --sport 4015  -j DROP
+ `sudo iptables -A FORWARD -i ppp0  -p udp --sport 4015  -j DROP` 过滤指定端口的数据包
  
- sudo iptables -t nat -A POSTROUTING -s 192.168.6.0/24 -j SNAT --to-source 192.168.11.168
+ `sudo iptables -t nat -A POSTROUTING -s 192.168.6.0/24 -j SNAT --to-source 192.168.11.168` 源地址转换，用于上网
+ 
+ `sudo iptables -t nat -A POSTROUTING -s 192.168.6.0/24 -o enp2s0 -j MASQUERADE` 不指定转换端口，只指定转换地址
