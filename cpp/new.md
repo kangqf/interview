@@ -181,3 +181,4 @@ A *obj =  new(buf) A(123);  // 这里是 placement new 这里的buf应该也是p
 2. 从链表中查找可用block 有 first fit 和 best fit 两种算法
 3. 对于first fit 如果存在很小size部分占用很大的block就需要将其分裂
 4. 对于block 的释放首先要检测其是否有效
+5. malloc 对于小于128kb的内存会调用brk()在堆上分配，而大于128kb的会调用mmap()在自由存储区分配，而brk() 分配的内存如果高地址的内存没有释放那么就算低地址的内存释放了也不会把内存归还给操作系统（这个类似于栈的特性）
