@@ -51,9 +51,3 @@ int vfprintf(FILE *stream, const char *format, va_list ap);
 int vsprintf(char *str, const char *format, va_list ap);
 int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 ```
-
-4. EOF
-
-用来表示是否结束的标志，常用来判断输入是否完成
-
-5. 可变参数函数
