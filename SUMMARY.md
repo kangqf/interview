@@ -12,6 +12,7 @@
   * [多态](cpp/polymorphism.md)
   * [STL使用技巧](cpp/stdusage.md)
   * [C++语言细节](cpp/smalltopic.md)
+  * [C输入与输出](cpp/inputandoutputinc.md)
   * [相关面试题](cpp/inttopic.md)
 * [数据结构算法](dsa/dsa.md)
   * [字符串](dsa/char.md)
