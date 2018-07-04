@@ -32,15 +32,21 @@ char * fputs(char * str, FILE * stream ); // 输出字符串到指定流
 ```
 
 3. printf 系列
-
+区别主要在： 输出到的位置是 标准输出 还是 流对象(f) 还是 缓冲数组(s) 以及是否有最大的大小限制(sn)
 ``` c
-​int printf( const char *format, ... );
-int fprintf( FILE *stream, const char *format, ... );
-int sprintf( char *buffer, const char *format, ... );
-int snprintf( char *restrict buffer, size_t bufsz, const char *restrict format, ... );
+#include <stdio.h>
 
-​int vprintf( const char *format, va_list vlist );​
-int vfprintf( FILE *stream, const char *format, va_list vlist );
-int vsprintf( char *buffer, const char *format, va_list vlist );
-int vsnprintf( char *restrict buffer, int bufsz, const char *restrict format, va_list vlist );
+int printf(const char *format, ...);
+int fprintf(FILE *stream, const char *format, ...);
+int sprintf(char *str, const char *format, ...);
+int snprintf(char *str, size_t size, const char *format, ...);
+
+int printf_s(const char *restrict format, ...); //printf只会检查格式字符串是否为空(null)，而printf_s还会检查格式字符串是否合法。
+
+#include <stdarg.h>
+
+int vprintf(const char *format, va_list ap);
+int vfprintf(FILE *stream, const char *format, va_list ap);
+int vsprintf(char *str, const char *format, va_list ap);
+int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 ```
