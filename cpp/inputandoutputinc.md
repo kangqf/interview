@@ -57,3 +57,38 @@ int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 值为 -1 文件输入结束的标识符，常用来判断输入是否完成
 
 5. C 可变参数函数
+
+``` c
+#include <stdio.h>
+#include <stdarg.h>
+
+int mulSum(int firstNum, int secondNum, ...)
+{
+    int suma = 0, sumb = 0;
+
+    va_list args;
+    va_start(args,secondNum);
+    fputs("\nfirst args",stderr);
+    // vfprintf(stderr," ARG: %d %d",args); //不能再此处是用该函数，因为此处会修改参数列表中的参数
+    while(firstNum--)
+    {
+        suma += va_arg(args,int);
+    }
+
+    fputs("\nsecond args",stderr);
+    /*vfprintf(stderr," ARG: %d %d ",args);*/
+    while(secondNum--)
+    {
+        sumb += va_arg(args,int);
+    }
+    va_end(args);
+
+    return suma * sumb;
+}
+
+int main(int argc, char *argv[])
+{
+    printf("\nmulSum %d\n",mulSum(2,2,1,2,2,4));// (1+2)*(2+4) = 18
+}
+
+```
