@@ -30,3 +30,17 @@ puts(char *);    // 输出一个字符串
 char * fgets(char * str, int num, FILE *stream); // 从指定流读入最多num个字符，以换行结束 推荐使用
 char * fputs(char * str, FILE * stream ); // 输出字符串到指定流
 ```
+
+3. printf 系列
+
+``` c
+​int printf( const char *format, ... );
+int fprintf( FILE *stream, const char *format, ... );
+int sprintf( char *buffer, const char *format, ... );
+int snprintf( char *restrict buffer, size_t bufsz, const char *restrict format, ... );
+
+​int vprintf( const char *format, va_list vlist );​
+int vfprintf( FILE *stream, const char *format, va_list vlist );
+int vsprintf( char *buffer, const char *format, va_list vlist );
+int vsnprintf( char *restrict buffer, int bufsz, const char *restrict format, va_list vlist );
+```
