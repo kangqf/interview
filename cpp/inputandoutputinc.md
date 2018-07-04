@@ -51,3 +51,9 @@ int vfprintf(FILE *stream, const char *format, va_list ap);
 int vsprintf(char *str, const char *format, va_list ap);
 int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 ```
+
+4. EOF
+
+值为 -1 文件输入结束的标识符，常用来判断输入是否完成
+
+5. C 可变参数函数
