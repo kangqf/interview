@@ -66,29 +66,28 @@ int mulSum(int firstNum, int secondNum, ...)
 {
     int suma = 0, sumb = 0;
 
-    va_list args;
-    va_start(args,secondNum);
+    va_list args; // 定义一个 va_list 变量
+    va_start(args,secondNum); // 初始化变量，secondNum应该是最后一个命名参数的参数名
     fputs("\nfirst args",stderr);
-    // vfprintf(stderr," ARG: %d %d",args); //不能再此处是用该函数，因为此处会修改参数列表中的参数
+    // vfprintf(stderr," ARG: %d %d",args); //不能再此处是用该函数，因为此处会修改参数列表中的参数指针
     while(firstNum--)
     {
         suma += va_arg(args,int);
     }
 
     fputs("\nsecond args",stderr);
-    /*vfprintf(stderr," ARG: %d %d ",args);*/
+    // vfprintf(stderr," ARG: %d %d ",args); //同上
     while(secondNum--)
     {
         sumb += va_arg(args,int);
     }
-    va_end(args);
+    va_end(args);//释放刚刚初始化的变量
 
     return suma * sumb;
 }
 
 int main(int argc, char *argv[])
 {
-    printf("\nmulSum %d\n",mulSum(2,2,1,2,2,4));// (1+2)*(2+4) = 18
+    printf("\nmulSum %d\n",mulSum(2,2,1,2,2,4));// (1+2)*(2+4) = 18 实现一个 求和相乘的函数，前两个表示求和的数字的个数分别是多少
 }
-
 ```
