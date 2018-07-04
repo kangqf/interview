@@ -43,7 +43,8 @@ int snprintf(char *str, size_t size, const char *format, ...);
 
 int printf_s(const char *restrict format, ...); //printf只会检查格式字符串是否为空(null)，而printf_s还会检查格式字符串是否合法。
 
-#include <stdarg.h>
+// 同上面一组函数，但是使用的是 一组va_list，使用的时候会改变参数列表中的参数
+#include <stdarg.h> 
 
 int vprintf(const char *format, va_list ap);
 int vfprintf(FILE *stream, const char *format, va_list ap);
