@@ -84,6 +84,7 @@
     * [awk](linux/shell/awk.md)
     * [其他指令](linux/shell/others.md)
     * [shell 实战](linux/shell/shellinaction.md)
+  * [系统限制配置](linux/limitconfig.md)
   * [常用的配置命令](linux/config.md)
 * [设计模式](design/design.md)
   * [单例模式](design/singleton.md)
