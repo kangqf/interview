@@ -75,6 +75,7 @@
   * [gcc](linux/gcc.md)
   * [gdb](linux/gdb.md)
   * [Makefile](linux/makefile.md)
+  * [GNU binutils工具](linux/binutils.md)
   * [正则表达式](linux/regex.md)
   * [crontab](linux/crontab.md)
   * [iptables](linux/iptables.md)
