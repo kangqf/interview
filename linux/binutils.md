@@ -62,24 +62,17 @@ ELF Header:
 3. 根据`Number of program headers`可知该程序有9个段
 4. 根据`Number of section headers`可知该程序有38个区，这比我们常见的 `.bss` `.data` `.text` `.rodata` 这些个区多了很多区，通过`readelf -S test` 来查看区的内容
 
-#### readelf 常见选项
-下面命令可以看到test文件中所有的符号： 
-$readelf -s test 
-Value的值是符号的地址
+#### readelf 查看符号和段
+`readelf -s main` 可以看到test文件中所有的符号，Value的值是符号的地址
 
-readelf -l test 
-区到段的映射，基本上是按照区的顺序进行映射。 
-如果Flags为R和E，表示该段可读和可执行。 
-如果Flags为W，表示该段可写。 
-VirtAddr是每个段的虚拟起始地址
-段有多种类型，下面介绍LOAD类型 
+`readelf -l main` 查看区到段的映射，基本上是按照区的顺序进行映射，如果Flags为R和E，表示该段可读和可执行，如果Flags为W，表示该段可写。 
+
+VirtAddr是每个段的虚拟起始地址，段有多种类型，例如LOAD类型 
 LOAD：该段的内容从可执行文件中获取。Offset标识内核从文件读取的位置。FileSiz标识读取多少字节。
 
-那么，执行test之后的进程的段布局是如何呢？ 
-可以通过cat /proc/pid/maps来查看。pid是进程的pid。 
-但是该test运行时间很短，可以使用gdb加断点来运行，或者在return语句之前加上sleep()。
+执行mian之后的进程的段布局可以通过cat /proc/[pid]/maps来查看。pid是进程的pid
+但是该test运行时间很短，可以使用gdb加断点来运行，或者在return语句之前加上sleep(
 
-下面使用gdb加断点的形式：
 
 ### objdump
 
