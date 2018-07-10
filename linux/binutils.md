@@ -57,9 +57,29 @@ ELF Header:
   Size of section headers:           64 (bytes)
   Number of section headers:         38
 ```
-1. 根据`Class`、`Typ`e和`Machine`，可以知道该文件在`X86-64`位机器上生成的64位可执行文件。
+1. 根据`Class`、`Typ`e和`Machine`，可以知道该文件在`X86-64`位机器上生成的64位可执行文件
+2. 根据`Entry point address`，可以知道当该程序启动时从虚拟地址`0x400af0`处开始运行。这个地址并不是`main`函数的地址，而是`_start`函数的地址，`_start`由链接器创建，`_start`是为了初始化程序。通过这个命令可以看到`_start`函数：`objdump -d -j .text main | grep _start -C 10`
+3. 根据`Number of program headers`可知该程序有9个段
+4. 根据`Number of section headers`可知该程序有38个区，这比我们常见的 `.bss` `.data` `.text` `.rodata` 这些个区多了很多区，通过`readelf -S test` 来查看区的内容
 
-2. 根据`Entry point address`，可以知道当该程序启动时从虚拟地址`0x400af0`处开始运行。这个地址并不是`main`函数的地址，而是`_start`函数的地址，`_start`由链接器创建，`_start`是为了初始化程序。通过这个命令可以看到`_start`函数：`objdump -d -j .text mian`
+#### readelf 常见选项
+下面命令可以看到test文件中所有的符号： 
+$readelf -s test 
+Value的值是符号的地址
+
+readelf -l test 
+区到段的映射，基本上是按照区的顺序进行映射。 
+如果Flags为R和E，表示该段可读和可执行。 
+如果Flags为W，表示该段可写。 
+VirtAddr是每个段的虚拟起始地址
+段有多种类型，下面介绍LOAD类型 
+LOAD：该段的内容从可执行文件中获取。Offset标识内核从文件读取的位置。FileSiz标识读取多少字节。
+
+那么，执行test之后的进程的段布局是如何呢？ 
+可以通过cat /proc/pid/maps来查看。pid是进程的pid。 
+但是该test运行时间很短，可以使用gdb加断点来运行，或者在return语句之前加上sleep()。
+
+下面使用gdb加断点的形式：
 
 ### objdump
 
