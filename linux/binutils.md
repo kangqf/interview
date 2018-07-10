@@ -122,7 +122,7 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 
 使用 `nm` 显示二进制目标文件的符号表，包括符号地址、符号类型、符号名等
 
-符号前面加上了一个表示符号类型的编码字符。常见的各种编码包括：A 表示绝对 (absolute)，这意味着不能将该值更改为其他的连接；B 表示 BSS 段中的符号；而 C 表示引用未初始化的数据的一般符号。
+符号前面加上了一个表示符号类型的编码字符。常见的各种编码包括：A 表示绝对 (absolute)，这意味着不能将该值更改为其他的连接；B 表示 BSS 段中的符号；而 C 表示引用未初始化的数据的一般符号；R 只读数据，`.rodata section` 里面的数据
 
 `nm a.out` 查看`a.out`文件的符号表
 
@@ -142,15 +142,22 @@ ar -x libtest.a   解压
 ar -r litest.a libtest1.o 添加或替换文件
 ```
 
-### ldd
 
 ### 其它
+#### ldd
+ldd 是一个脚本，列出依赖得动态库
 
 #### objcopy 格式转换
 objcopy来改变hello的文件类型: 原先它是ELF格式的可执行程序, 现将它转换为srec格式. srec格式文件是Motolora S-Record格式的文件
 
 #### strip 
 strip的功能也相对的简单，主要用于去除程序文件中的调试信息以便减小文件的大小。
+
+#### as
+as汇编器，将汇编代码汇编成目标文件
+
+####  size  
+size工具，就是列程序文件中各段的大小
 
 参考： 
 [readelf命令和ELF文件详解](https://blog.csdn.net/Linux_ever/article/details/78210089)
