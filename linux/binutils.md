@@ -134,13 +134,23 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 ```
 
 ### ar
+ar用于建立、修改、提取档案文件(archive)。archive是一个包含多个被包含文件的单一文件（也称之为库文件），其结构保证了可以从中检索并得到原始的被包含文件（称之为archive中的member）。
 
+```
+ar -tv libtest.a  列出压缩的内容
+ar -x libtest.a   解压
+ar -r litest.a libtest1.o 添加或替换文件
+```
 
+### ldd
 
-### ld
+### 其它
 
+#### objcopy 格式转换
+objcopy来改变hello的文件类型: 原先它是ELF格式的可执行程序, 现将它转换为srec格式. srec格式文件是Motolora S-Record格式的文件
 
-
+#### strip 
+strip的功能也相对的简单，主要用于去除程序文件中的调试信息以便减小文件的大小。
 
 参考： 
 [readelf命令和ELF文件详解](https://blog.csdn.net/Linux_ever/article/details/78210089)
