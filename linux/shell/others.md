@@ -35,10 +35,15 @@ find -name "*.txt" -type f -mtime -1 -perm 777 -size -1k -exec mv -r {} /tmp/ \;
 -n 显示行号
 ```
 
+设定前后打印的内容
+`grep -{{C|B|A}} 3 {{search_string}} {{path/to/file}}` [C]ontext around, [B]efore, or [A]fter each match
+
 实例：
 ```
 grep -v -n --color "root" /etc/passwd
+
 ifconfig | grep -E '([0-9]{1,3}\.){3}([0-9]{1,3})' --color
+
 grep "h_est" ./ -r
 ```
 

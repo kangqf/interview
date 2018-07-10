@@ -18,78 +18,48 @@ ELF文件有下面三种类型：
 3. 共享库 
 `gcc test.c -fPIC -shared -o libtest.so` 得到的文件libtest.so就是共享库。
 
-#### 
-可以通过readelf来区分上面三种类型的ELF文件，每种类型文件的头部信息（readelf -h 读取头部信息）是不一样的。 
+#### 通过头部区分文件类型
+可以通过readelf来区分上面三种类型的ELF文件，每种类型文件的头部信息（readelf -h 读取头部信息）是不一样的。
+ 
 ```
- readelf -h ./libtest.a ../makefile/a.out ../dynamic/libtest.so
+readelf -h ./makefile/test ./dynamic/libtest.so ./static/libtest.a
 
-File: ./libtest.a(libtest.o)
-ELF Header:
-  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
-  Class:                             ELF64
-  Data:                              2's complement, little endian
-  Version:                           1 (current)
-  OS/ABI:                            UNIX - System V
-  ABI Version:                       0
-  Type:                              REL (Relocatable file)
-  Machine:                           Advanced Micro Devices X86-64
-  Version:                           0x1
-  Entry point address:               0x0
-  Start of program headers:          0 (bytes into file)
-  Start of section headers:          712 (bytes into file)
-  Flags:                             0x0
-  Size of this header:               64 (bytes)
-  Size of program headers:           0 (bytes)
-  Number of program headers:         0
-  Size of section headers:           64 (bytes)
-  Number of section headers:         13
-  Section header string table index: 12
+File: ./makefile/test
+  Type:                              EXEC (Executable file)
 
-File: ../makefile/a.out
-ELF Header:
-  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
-  Class:                             ELF64
-  Data:                              2's complement, little endian
-  Version:                           1 (current)
-  OS/ABI:                            UNIX - System V
-  ABI Version:                       0
+File: ./dynamic/libtest.so
   Type:                              DYN (Shared object file)
+
+File: ./static/libtest.a(libtest.o)
+  Type:                              REL (Relocatable file)
+```
+
+#### 分析头部内容
+```
+readelf -h main
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
   Machine:                           Advanced Micro Devices X86-64
   Version:                           0x1
-  Entry point address:               0x7b0
+  Entry point address:               0x400af0
   Start of program headers:          64 (bytes into file)
-  Start of section headers:          7056 (bytes into file)
+  Start of section headers:          172112 (bytes into file)
   Flags:                             0x0
   Size of this header:               64 (bytes)
   Size of program headers:           56 (bytes)
   Number of program headers:         9
   Size of section headers:           64 (bytes)
-  Number of section headers:         29
-  Section header string table index: 28
-
-File: ../dynamic/libtest.so
-ELF Header:
-  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
-  Class:                             ELF64
-  Data:                              2's complement, little endian
-  Version:                           1 (current)
-  OS/ABI:                            UNIX - System V
-  ABI Version:                       0
-  Type:                              DYN (Shared object file)
-  Machine:                           Advanced Micro Devices X86-64
-  Version:                           0x1
-  Entry point address:               0x530
-  Start of program headers:          64 (bytes into file)
-  Start of section headers:          6104 (bytes into file)
-  Flags:                             0x0
-  Size of this header:               64 (bytes)
-  Size of program headers:           56 (bytes)
-  Number of program headers:         7
-  Size of section headers:           64 (bytes)
-  Number of section headers:         28
-  Section header string table index: 27
-
+  Number of section headers:         38
 ```
+1. 根据`Class`、`Typ`e和`Machine`，可以知道该文件在`X86-64`位机器上生成的64位可执行文件。
+
+2. 根据`Entry point address`，可以知道当该程序启动时从虚拟地址`0x400af0`处开始运行。这个地址并不是`main`函数的地址，而是`_start`函数的地址，`_start`由链接器创建，`_start`是为了初始化程序。通过这个命令可以看到`_start`函数：`objdump -d -j .text mian`
 
 ### objdump
 
