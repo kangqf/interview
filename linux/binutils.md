@@ -106,10 +106,36 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 3. 在将应用程序加载到内存空间执行时，操作系统负责代码段、数据段和BSS段的加载，并将在内存中为这些段分配空间。栈亦由操作系统分配和管理，而不需要程序员显示地管理；堆段由程序员自己管理，即显示地申请和释放空间
 
 ### objdump
+对于`readelf` 可以通过`-S`看到section信息，而不能看到里面的汇编代码，我们可以通过 `objdump`来反汇编
+
+`objdump -d program` 反汇编程序中执行指令的section，-D 会反汇编所有的section
+
+`objdump -d -j .text program` 反汇编程序的指定section
+`objdump -f program` 显示程序的头部信息，PHT(Program Header Table)
+`objdump -h program` 显示程序的Section Header信息，SHT(Section Header Table)
+`objdump -S a.out` 将C源代码和反汇编出来的指令对照，记得要在编译的时候加上 `-g` 选项
+
+另外 -m 还可以指定架构 例如 `-m i386`
 
 ### nm
+查看符号表
+
+使用 `nm` 显示二进制目标文件的符号表，包括符号地址、符号类型、符号名等
+
+符号前面加上了一个表示符号类型的编码字符。常见的各种编码包括：A 表示绝对 (absolute)，这意味着不能将该值更改为其他的连接；B 表示 BSS 段中的符号；而 C 表示引用未初始化的数据的一般符号。
+
+`nm a.out` 查看`a.out`文件的符号表
+
+```
+-g  表示只看全局函数
+--demangle 输出C++符号
+-a 列出所有的符号
+-u 只列出未定义的符号
+```
 
 ### ar
+
+
 
 ### ld
 
