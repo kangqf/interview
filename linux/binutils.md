@@ -1,7 +1,7 @@
 ## binutils 工具
 
 ### readelf
-使用 readelf 显示一个或者多个elf格式的目标文件的信息
+使用 readelf 显示一个或者多个elf格式的目标文件的信息，可以通过 `readelf -a programname`来读取主要的信息
 
 #### elf文件
 ELF（Executable and Linking Format）是一个定义了目标文件内部信息如何组成和组织的文件格式。内核会根据这些信息加载可执行文件，内核根据这些信息可以知道从文件哪里获取代码，从哪里获取初始化数据，在哪里应该加载共享库，等信息。 
@@ -65,14 +65,45 @@ ELF Header:
 #### readelf 查看符号和段
 `readelf -s main` 可以看到test文件中所有的符号，Value的值是符号的地址
 
-`readelf -l main` 查看区到段的映射，基本上是按照区的顺序进行映射，如果Flags为R和E，表示该段可读和可执行，如果Flags为W，表示该段可写。 
+Segment(-l 查看)实际上就是由section(-S 查看)组成的，将相应的一些section映射到一起就叫segment了,就是说segment是由0个或多个section组成的，实际上本质都是section
+
+`readelf -l main` 查看区到段的映射，基本上是按照区的顺序进行映射，如果Flags为R和E，表示该段可读和可执行，如果Flags为W，表示该段可写
 
 VirtAddr是每个段的虚拟起始地址，段有多种类型，例如LOAD类型 
-LOAD：该段的内容从可执行文件中获取。Offset标识内核从文件读取的位置。FileSiz标识读取多少字节。
 
-执行mian之后的进程的段布局可以通过cat /proc/[pid]/maps来查看。pid是进程的pid
-但是该test运行时间很短，可以使用gdb加断点（b main在main函数打断点 然后r跑起来 然后info program 查看pid）来运行，或者在return语句之前加上sleep()
+LOAD：该段的内容从可执行文件中获取。Offset标识内核从文件读取的位置。FileSiz标识读取多少字节
 
+执行`main`之后的进程的段布局可以通过`cat /proc/[pid]/maps`来查看。pid是进程的pid
+但是该`main`运行时间很短，可以使用gdb加断点（`b main`在`main`函数打断点 然后`r`跑起来 然后`info program` 查看pid）来运行，或者在return语句之前加上sleep()
+
+得到的结果如下：
+
+```
+sudo cat /proc/20635/maps
+00400000-00401000 r-xp 00000000 08:04 10358161                           /home/kqf/test/testc
+00600000-00601000 r--p 00000000 08:04 10358161                           /home/kqf/test/testc
+00601000-00602000 rw-p 00001000 08:04 10358161                           /home/kqf/test/testc
+7ffff7a0d000-7ffff7bcd000 r-xp 00000000 08:04 2098731                    /lib/x86_64-linux-gnu/libc-2.23.so
+7ffff7bcd000-7ffff7dcd000 ---p 001c0000 08:04 2098731                    /lib/x86_64-linux-gnu/libc-2.23.so
+7ffff7dcd000-7ffff7dd1000 r--p 001c0000 08:04 2098731                    /lib/x86_64-linux-gnu/libc-2.23.so
+7ffff7dd1000-7ffff7dd3000 rw-p 001c4000 08:04 2098731                    /lib/x86_64-linux-gnu/libc-2.23.so
+7ffff7dd3000-7ffff7dd7000 rw-p 00000000 00:00 0
+7ffff7dd7000-7ffff7dfd000 r-xp 00000000 08:04 2098727                    /lib/x86_64-linux-gnu/ld-2.23.so
+7ffff7fd1000-7ffff7fd4000 rw-p 00000000 00:00 0
+7ffff7ff7000-7ffff7ffa000 r--p 00000000 00:00 0                          [vvar]
+7ffff7ffa000-7ffff7ffc000 r-xp 00000000 00:00 0                          [vdso]
+7ffff7ffc000-7ffff7ffd000 r--p 00025000 08:04 2098727                    /lib/x86_64-linux-gnu/ld-2.23.so
+7ffff7ffd000-7ffff7ffe000 rw-p 00026000 08:04 2098727                    /lib/x86_64-linux-gnu/ld-2.23.so
+7ffff7ffe000-7ffff7fff000 rw-p 00000000 00:00 0
+7ffffffde000-7ffffffff000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+```
+前面第一列是VMA的起始地址和结束地址，最后一列是该区域内容所属文件。 
+
+#### 再谈内存区域分配
+1. 一般情况下，一个可执行二进制程序在存储(没有调入到内存运行)时拥有3个部分，分别是代码段(text)、数据段(data)和BSS段。这3个部分一起组成了该可执行程序的文件
+2. 而当程序被加载到内存单元时，则需要另外两个域：堆域和栈域
+3. 在将应用程序加载到内存空间执行时，操作系统负责代码段、数据段和BSS段的加载，并将在内存中为这些段分配空间。栈亦由操作系统分配和管理，而不需要程序员显示地管理；堆段由程序员自己管理，即显示地申请和释放空间
 
 ### objdump
 
