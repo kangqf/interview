@@ -71,7 +71,7 @@ VirtAddr是每个段的虚拟起始地址，段有多种类型，例如LOAD类�
 LOAD：该段的内容从可执行文件中获取。Offset标识内核从文件读取的位置。FileSiz标识读取多少字节。
 
 执行mian之后的进程的段布局可以通过cat /proc/[pid]/maps来查看。pid是进程的pid
-但是该test运行时间很短，可以使用gdb加断点来运行，或者在return语句之前加上sleep(
+但是该test运行时间很短，可以使用gdb加断点（b main在main函数打断点 然后r跑起来 然后info program 查看pid）来运行，或者在return语句之前加上sleep()
 
 
 ### objdump

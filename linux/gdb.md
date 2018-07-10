@@ -8,6 +8,7 @@ gdb <program> <PID>            调试服务程序
 ```
 l      查看源码  list
 b <n>  打断点 break
+b <fun> 在fun函数名处打断点
 r      运行到断点 run
 c      下一个断点 continue
 until <n> 运行到指定的行号
@@ -52,7 +53,7 @@ set args arg list    指定运行时的参数
 show args    查看设置好的参数
 set env var string     设置环境变量
 show env var    查看环境变量
-info program 来查看程序的是否在运行，进程号，被暂停的原因
+info program 来查看程序的是否在运行，**进程号**，被暂停的原因
 info address <s> 查看符号s的地址
 ```
 
