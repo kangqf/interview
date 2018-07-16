@@ -68,3 +68,9 @@ done
 cat input.txt | cut -c 1-4 > num.txt
 paste -d " " input.txt num.txt > output.txt
 ```
+
+#### 几道面试题
+```
+find . -name '*.txt' -type f -exec rm {} \; # 用shell命令查找当前目录下所有包含txt的文件，并且删除他们 
+ps -e | cut -c 25- | sed '1d' > test.txt  # 用shell命令将当前所有运行的进程的名字保存到一个文件
+```
