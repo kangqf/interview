@@ -43,4 +43,4 @@ netstat wget curl route host ping nslookup traceroute ssh scp sftp
 #### 系统以及IPC管理
 lsipc  uname arch date strace ipcs ipcrm 
 
-更多命令参考[Linux 命令大全](http://www.runoob.com/linux/linux-command-manual.html)
+更多命令参考[Linux 命令大全](http://www.runoob.com/linux/linux-command-manual.html) 以及 Linux Shell Cookbook
