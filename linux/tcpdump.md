@@ -13,6 +13,8 @@
 -S    打印TCP 数据包的顺序号时, 使用绝对的顺序号, 而不是相对的顺序号
 -e    每行的打印输出中将包括数据包的数据链路层头部信息
 
+常规选项 -XvvennSs
+
 #### 操作符过滤
 
 * 逻辑运算
@@ -30,7 +32,16 @@ udp
 ip
 arp
 icmp
+
 ether
+wlan
+ppp
+
+pppoe
+pppoed
+mpls 
+vlan <vlan_id>
+
 ip proto ospf
 ip proto 89  参考/etc/protocols中的协议编号
 
@@ -57,6 +68,14 @@ tcpdump ether multicast
 greater|less <length> 
 proto [ index : size ]  proto指定要查看的报文头——ip则查看IP头，tcp则查看TCP头，index 是起始下标，size 是使用的字节数
 
+
+proto 的取值可以是以下取值之一:
+```
+ether, fddi, tr, wlan, ppp, slip, link, ip, arp, rarp,tcp, udp, icmp, ip6 或者 radio. 
+```
+这指明了该引用操作所对应的协议层.(ether, fddi, wlan,tr, ppp, slip and link 对应于数据链路层, radio 对应于802.11(wlan,无线局域网)某些数据包中的附带的"radio"头(nt: 其中描述了波特率, 数据加密等信息)).
+
+
 * 例子
 ```
 tcpdump greater 200   只取长度大于200字节的报文
@@ -71,6 +90,19 @@ tcpdump -i eth1 '((port 25) and (tcp[(tcp[12]>>2):4] = 0x4d41494c))'  抓 SMTP �
 tcp[tcpflags]
 icmp[icmptype]
 
+以下为ICMP 协议头中type 域的可用取值:
+```
+icmp-echoreply, icmp-unreach, icmp-sourcequench, icmp-redirect, icmp-echo, icmp-routeradvert,
+icmp-routersolicit, icmp-timx-ceed, icmp-paramprob, icmp-tstamp, icmp-tstampreply,
+icmp-ireq, icmp-ireqreply, icmp-maskreq, icmp-maskreply.
+```
+
+以下为TCP 协议头中flags 域的可用取值:
+```
+tcp-fin, tcp-syn, tcp-rst, tcp-push,tcp-ack, tcp-urg.
+```
+
+* 例子
 ```
 tcpdump -i eth1 'tcp[tcpflags] = tcp-syn'  只抓 SYN 包
 tcpdump 'tcp[tcpflags] & (tcp-syn|tcp-fin) != 0 and not src and dst net localnet'
@@ -78,3 +110,4 @@ tcpdump -i eth1 'tcp[tcpflags] & tcp-syn != 0 and tcp[tcpflags] & tcp-ack != 0' 
 tcpdump 'icmp[icmptype] != icmp-echo and icmp[icmptype] != icmp-echoreply'
 ```
 
+参考[Linux tcpdump命令详解](https://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html)
