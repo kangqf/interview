@@ -9,7 +9,6 @@
 -k 跳过出错的命令的规则，继续执行其他的规则
 ```
 
-
 ### 基本语法
 ```
 target : dep
@@ -24,12 +23,10 @@ target 依赖于 dep，如果dep有更新，那么target 就会被更新，comma
 ```
 var := kkk 使用kkk变量定义var kkk 必须事先定义过
 var ?= kkk 如果var没有定义则用kkk定义var
-var += kkk  为var添加kkk
+var += kkk 为var追加kkk
 ```
-
 #### 为 make 传递变量
 我们可以使用 `make KEY=VAL`的形式来向make传递参数，然后在Makefile里面使用`gcc ${KEY} main.c`来引用参数的值。
-
 #### 变量中使用通配符
 ```
 objects = *.o 相当于宏展开
@@ -65,7 +62,7 @@ clean :
 `include <filename>` 可以引用其它路径的Makefile，例如`include foo.make *.mk $(bar)`
 #### 嵌套make
 在多个文件夹中都放有一个Makefile，我们需要嵌套执行make
-cd subdir && $(MAKE)
+`cd subdir && $(MAKE)`
 #### 子shell
 ```
 cd dir 
@@ -73,9 +70,7 @@ cd dir
 
 cd dir; ./main
 ```
-
 为了保持cd对后续命令的作用，应该用分号的形式。
-
 #### 自动查找头文件
 使用编译器查找依赖的头文件`cc -M main.c`
 
