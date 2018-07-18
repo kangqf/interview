@@ -254,7 +254,95 @@ int lps(string &str)
     return max-1;
 }
 ```
-
 ### KMP
+KMP用于在一个text中快速查找是否存在pattern子串。KMP 的复杂度是 O(n+m) 其核心思想就是不需要在不匹配的时候每次都返回0处重新开始比较，而是使用next数组来保存每次应该回退的长度，该长度表示的是**前一个元素结尾**的模式串的最长前缀后缀。所以next数组的构建需要先求最长前缀后缀，然后进行移位。
+
+具体参考代码：
+``` cpp
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// next[i] 表示的是最长前缀后缀的长度
+// j 时前缀的端点， i 表示当前的后缀的端点
+vector<int> getNextArray(string &pattern)
+{
+    vector<int> next(pattern.length(),0);
+    int i = 1, j = 0;
+    next[0] = 0;
+    while(i < pattern.length())
+    {
+        if(pattern[j] == pattern[i])
+        {
+            next[i] = j+1;
+            i++;
+            j++;
+        }
+        else
+        {
+            if(j == 0) //前缀回到端点
+            {
+                next[i++] = 0;
+            }
+            else
+                j = next[j-1]; // 回到上一个层次的前缀的比较
+        }
+    }
+    return next;
+}
+
+// 真正意义上的next数组就是最长前缀后缀往右移一位，然后赋初值-1
+void moveNextArray(vector<int> &next)
+{
+    int i;
+    for(i = next.size()-1; i > 0; --i)
+    {
+        next[i] = next[i-1];
+    }
+    next[i] = -1;
+}
+
+vector<int> kmp(string &text, string &pattern, vector<int> &next)
+{
+    int i = 0, j = 0;
+    vector<int> re;
+    int len1 = text.length(),len2 = pattern.length();
+    while(i < len1 && j < len2)
+    {
+        if(next[j] == -1 || text[i] == pattern[j])
+        {
+            if(text[i] == pattern[j])
+                j++;
+            i++;
+            if(j == len2)
+            {
+                re.push_back(i-j);
+                j = j-next[j]-1;
+            }
+        }
+        else
+        {
+            j = j-next[j]-1;
+        }
+    }
+    return re;
+}
+
+int main()
+{
+    string text = "BABABABAABABA"; //index = 5;
+    string pattern = "ABAABABA";
+    vector<int> next = getNextArray(pattern);
+    moveNextArray(next);
+    vector<int> re = kmp(text,pattern,next);
+    for(auto c:re)
+    {
+        cout<<"Find pattern at "<<c<<" 's char"<<endl;
+    }
+    return 0;
+}
+```
 
 ### AC 自动机
