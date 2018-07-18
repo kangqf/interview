@@ -91,8 +91,48 @@ int nrlrs(string & str)
 ```
 
 ### 编辑距离 Edit Distance
+编辑距离指的是一个字符串 通过增加，删除，替换 三种操作变成另外一个字符串所需要的最少的次数。
 
-### 最长回文子串
+这是一个典型的二阶动态规划问题，将`dp[i][j]`表征为`str1.substr(0,i)` 与 `str2.substr(0,j)`的编辑距离，这其实就是原问题的一个子问题。
+
+`dp[i][j]` 更新：如果 字符相同，则转换为上一个子问题，不相同，则取三种操作中的最小的作为更新值。
+
+参考代码：
+``` cpp
+int editDistance(string &str1, string &str2)
+{
+    int len1 = str1.length();
+    int len2 = str2.length();
+
+    vector<vector<int>> dp(len1+1,vector<int>(len2+1,0));
+    for(int i = 0; i <= len1; ++i)
+    {
+        dp[i][0] = i;
+    }
+    for(int j = 0; j <= len2; ++j)
+    {
+        dp[0][j] = j;
+    }
+
+    for(int i = 1; i <= len1; ++i)
+    {
+        for(int j = 1; j <= len2; ++j)
+        {
+            if(str1[i] == str2[j])
+            {
+                dp[i][j] = dp[i-1][j-1];
+            }
+            else
+            {
+                dp[i][j] = 1+min(min(dp[i][j-1],dp[i-1][j]),dp[i-1][j-1]);
+            }
+        }
+    }
+
+    return dp[len1][len2];
+}
+```
+
 ### LCS
 
 ### 最长回文子串
