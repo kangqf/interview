@@ -198,6 +198,62 @@ int lcs(string &str, string &pattern)
 ```
 
 ### 最长回文子串
+一个字符串得子串中是回文子串，且长度最长是多少得问题。
+
+核心思想：维持 目前最长回文的中心 id，边界 mx，使用 i 遍历整个子串，初始化i处的最长回文长度P[i]，然后通过i处往两边扩展来更新 P[i]。最主要的优化就是这里的**P[i]的初始化时可以根据以前的信息来更快的初始**， 也就是 `P[i] = mx > i ? min(mx - i, P[2*id-i]) : 1;`，这里用的思想就是对称点和边界点，取到 P[2*id-i] 就是对称点，取到 mx-i 就是边界点。
+
+处理细节，这里涉及到字符串长度奇偶的问题，可以通过Manacher 算法来处理这个细节。
+
+参考代码：
+``` cpp
+string getManacherStr(string &str)
+{
+    string tmpStr = "^";
+    for(int i = 0; i < str.length(); ++i)
+    {
+        tmpStr += "#";
+        tmpStr += str[i];
+    }
+    tmpStr += "#$";
+    return tmpStr;
+}
+
+int lps(string &str)
+{
+    string tmpstr = getManacherStr(str);
+    vector<int> P(tmpstr.length(),1); // 初始化为1，就是最少长度都是1
+    int id = 0;
+    int mx = 0;
+
+    for(int i = 1; i < tmpstr.length(); ++i)
+    {
+        if(mx < i)
+        {
+            P[i] = 1;
+        }
+        else
+        {
+            P[i] = min(mx-i,P[2*id-i]);
+        }
+        while(tmpstr[i-P[i]] == tmpstr[i+P[i]])
+        {
+            P[i]++;
+        }
+        if(i+P[i] > mx)
+        {
+            id = i;
+            mx = i+P[i];
+        }
+    }
+    int max = 0;
+    for(int i = 0; i < tmpstr.length(); ++i)
+    {
+        if(P[i] > max)
+            max = P[i];
+    }
+    return max-1;
+}
+```
 
 ### KMP
 
