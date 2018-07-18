@@ -59,10 +59,32 @@ int lisBinSearch(vector<int> &data)
 ```
 
 ### MCSS
+求的是一个数组中的所有子序列中和最大的子序列的和。这是一个简单的一维动态规划，可以通过动态数组节省空间。
+
+参考代码如下：
+``` cpp
+int mcss(vector<int> & data)
+{
+    int maxSum = 0, tmpSum = 0;
+    for(int i = 0; i < data.size(); ++i)
+    {
+        if(tmpSum > 0)
+        {
+            tmpSum += data[i];
+        }
+        else
+        {
+            tmpSum = data[i];
+        }
+        if(tmpSum > maxSum)
+            maxSum = tmpSum;
+    }
+    return maxSum;
+}
+```
 
 ### 单调栈
 
 ### 单调队列
-
 
 ### 背包
