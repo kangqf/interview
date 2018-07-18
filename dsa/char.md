@@ -1,7 +1,5 @@
 ## 字符串总结
 
-LCS  LNRS  Edit Distance  KMP  Trie Tree  AC 自动机（hdoj 2222） 
-
 ### 最长无重复子串-LNRS(Longest No Repeating Substring)
 指的是一个字符串所有子串中，子串无重复字母的最大的长度。
 
@@ -134,6 +132,70 @@ int editDistance(string &str1, string &str2)
 ```
 
 ### LCS
+求两个字符串的最长的公共子序列
+
+典型的二阶dp，和编辑距离很像，只是初始化默认是零，然后不需要特意初始化边界值
+
+涉及这种问题的变种是把子序列变成子串，可以像参考代码注释部分类似的修改，但是时间复杂度是`O(m*n)`,另外可以有一种快速算法`KMP`,时间复杂度为`O(m+n)`
+
+参考代码：
+``` cpp
+void outputlcs(string &str, string &pattern, vector<vector<int>> &dp)
+{
+    int i = str.length();
+    int j = pattern.length();
+    vector<char> re;
+    while(i > 0 && j > 0)
+    {
+        if(str[i-1] == pattern[j-1])
+        {
+            re.push_back(str[i-1]);
+            i--;
+            j--;
+        }
+        else if(dp[i][j] == dp[i][j-1])
+        {
+            --j;
+        }
+        else if(dp[i][j] == dp[i-1][j])
+        {
+            --i;
+        }
+    }
+    reverse(re.begin(),re.end());
+    for(auto c:re)
+    {
+        cout<<c<<" ";
+    }
+}
+
+int lcs(string &str, string &pattern)
+{
+    int len1 = str.length();
+    int len2 = pattern.length();
+
+    vector<vector<int>> dp(len1+1,vector<int>(len2+1,0));
+
+    for(int i = 1; i <= len1; ++i)
+    {
+        for(int j = 1; j <= len2; ++j)
+        {
+            if(str[i-1] == pattern[j-1])
+            {
+                dp[i][j] = dp[i-1][j-1] + 1;
+            }
+            else
+            {
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+                // dp[i][j] = 0; //这里是对于子串的修改，并且最后需要遍历一下dp求到最长的子串
+            }
+        }
+    }
+
+    outputlcs(str,pattern,dp);
+    return dp[len1][len2];
+}
+```
 
 ### 最长回文子串
 
