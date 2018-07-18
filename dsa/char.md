@@ -89,3 +89,14 @@ int nrlrs(string & str)
     return maxLength;
 }
 ```
+
+### 编辑距离 Edit Distance
+
+### 最长回文子串
+### LCS
+
+### 最长回文子串
+
+### KMP
+
+### AC 自动机
