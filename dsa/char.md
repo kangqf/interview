@@ -265,8 +265,8 @@ KMP用于在一个text中快速查找是否存在pattern子串。KMP 的复杂�
 
 using namespace std;
 
-// next[i] 表示的是最长前缀后缀的长度
-// j 时前缀的端点， i 表示当前的后缀的端点
+// next[i] 表示的是以next[i]结尾的最长前缀后缀的长度
+// j 是前缀的端点， i 表示当前的后缀的端点
 vector<int> getNextArray(string &pattern)
 {
     vector<int> next(pattern.length(),0);
@@ -282,7 +282,7 @@ vector<int> getNextArray(string &pattern)
         }
         else
         {
-            if(j == 0) //前缀回到端点
+            if(j == 0) //前缀回到端点 不用继续比了直接赋值0
             {
                 next[i++] = 0;
             }
@@ -313,18 +313,18 @@ vector<int> kmp(string &text, string &pattern, vector<int> &next)
     {
         if(next[j] == -1 || text[i] == pattern[j])
         {
-            if(text[i] == pattern[j])
+            if(text[i] == pattern[j]) // 这个表示如果是从头开始的话 j就不递增
                 j++;
             i++;
-            if(j == len2)
+            if(j == len2) // 成功匹配
             {
                 re.push_back(i-j);
-                j = j-next[j]-1;
+                j = j-next[j]-1; // 这里也不用回退到开始的0位置
             }
         }
         else
         {
-            j = j-next[j]-1;
+            j = j-next[j]-1; // 模式串往前移这么多
         }
     }
     return re;
