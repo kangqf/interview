@@ -489,8 +489,8 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
-参考[深入理解Aho-Corasick自动机算法](https://blog.csdn.net/lemon_tree12138/article/details/49335051)
-[AC自动机-算法详解](https://blog.csdn.net/u013371163/article/details/60469534)
+参考[AC自动机-算法详解](https://blog.csdn.net/u013371163/article/details/60469534)
+[AC自动机模板](https://github.com/eecrazy/ACM/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/AC%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E6%9D%BF.cpp)
 
 
 
