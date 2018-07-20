@@ -353,7 +353,141 @@ int main()
 对于这里的回退的节点，需要使用一个称为失配指针（fail 指针）的概念来指出。所谓的失配指针，其实和KMP里面的next数组是一样的含义，在KMP中next数组中记录的是前缀和后缀一样的最长的长度，而这里的fail记录的也是和当前节点后缀一样的最长前缀的节点的位置。如果当前节点匹配失败，就可以立即跳到该节点的位置来进行继续匹配下一个模式，fail指针的构建与next数组的构建也差不多，就是通过其父节点的fail指针回溯来找到fail指针该指向的位置。
 
 ``` cpp
+#include <iostream>
+#include <string>
+#include <vector>
+#include <queue>
 
+using namespace std;
+
+struct node
+{
+    int flag;// 判断是否是pattern的最后一个字符
+    node *fail;
+    node *next[26]; // 通过数组节点是否为空判断节点是否存在
+    node()
+    {
+        flag = 0;
+        fail=NULL;
+        for(int i=0; i<26; i++)
+            next[i] = NULL;
+    }
+
+};
+
+void insertNode(node *root, string &str)
+{
+    node *tmp = root;
+    for(int i = 0; i < str.length(); ++i)
+    {
+        if(tmp->next[str[i] - 'a'] == NULL) // 还没有添加该节点
+        {
+            tmp->next[str[i] - 'a'] = new node();
+        }
+        tmp = tmp->next[str[i] - 'a'];
+    }
+    tmp->flag += 1; // 表示这已经是一个pattern 的结尾了
+}
+
+node * constructTrieTree(vector<string> &pattern)
+{
+    node *root = new node();
+    root->flag = -1; // 构建root节点
+    for(int i = 0; i < pattern.size(); ++i)
+    {
+        insertNode(root,pattern[i]);
+    }
+    return root;
+}
+
+void setFailPoint(node *root)
+{
+    // 使用bfs + 队列来构建失效指针
+    queue<node *> nodeQueue;
+    nodeQueue.push(root);
+    node *tmp;
+    node *parFail;
+    while(!nodeQueue.empty())
+    {
+        tmp = nodeQueue.front();
+        nodeQueue.pop();
+        for(int i = 0; i < 26; ++i)
+        {
+            if(tmp->next[i] != NULL)
+            {
+                if(tmp == root)
+                {
+                    tmp->next[i]->fail = root; // root 节点的所有fail指针都指向root
+                }
+                else
+                {
+                    parFail = tmp->fail;// 父节点的fail指针  注意root节点的fail指针为NULL
+                    while(parFail != NULL) // 表示还没有回溯到root
+                    {
+                        if(parFail->next[i] != NULL) // 如果存在这样的相同前缀
+                        {
+                            tmp->next[i]->fail = parFail->next[i]; // 找到前缀与当前节点后缀相同的节点，则赋值fail指针
+                            break;
+                        }
+                        parFail = parFail->fail;
+                    }
+                    if(parFail == NULL) // 没找到这样相同的前缀
+                    {
+                        tmp->next[i]->fail = root;
+                    }
+                }
+                nodeQueue.push(tmp->next[i]); // 将子节点加入到队列中
+            }
+        }
+    }
+
+}
+
+int acCount(string &text, node *root)
+{
+    int count = 0;
+    node *curr = root;
+    int ch;
+    for(int i = 0; i < text.size(); ++i)
+    {
+        ch = text[i] - 'a';
+        while(curr != root && NULL == curr->next[ch]) // 当前节点不为root 或者当前节点的下一节点与text[i]已经不匹配了，就通过fail找到匹配的
+        {
+            curr = curr->fail; // 找到匹配节点
+        }
+        curr = curr->next[ch]; // 将当前节点移到匹配的节点
+        if(curr == NULL)
+            curr = root; // 没有找到匹配节点
+        node *tmp = curr; // 为了不改变当前的匹配节点所以新建一个变量
+        while(tmp != NULL && tmp->flag != -1) // 没有回溯到root 并且没有被访问过
+        {
+            count += tmp->flag;
+            tmp->flag = -1; // 改变其访问标识
+            tmp = tmp->fail; // 通过fail继续进行回溯
+        }
+    }
+    return count;
+}
+
+void del(node *root)
+{
+    if(root==NULL)return ;
+    for(int i=0;i<26;i++)
+        del(root->next[i]);
+    delete(root);
+}
+
+int main(int argc, char *argv[])
+{
+    string text = "yasherhs";
+    vector<string> pattern = {"she","he","say","shr","her"};
+
+    node *root =  constructTrieTree(pattern);
+    setFailPoint(root);
+    cout<<acCount(text,root);
+    del(root);
+    return 0;
+}
 ```
 参考[深入理解Aho-Corasick自动机算法](https://blog.csdn.net/lemon_tree12138/article/details/49335051)
 [AC自动机-算法详解](https://blog.csdn.net/u013371163/article/details/60469534)
