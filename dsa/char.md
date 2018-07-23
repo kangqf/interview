@@ -492,10 +492,15 @@ int main(int argc, char *argv[])
 参考[AC自动机-算法详解](https://blog.csdn.net/u013371163/article/details/60469534)
 [AC自动机模板](https://github.com/eecrazy/ACM/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/AC%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E6%9D%BF.cpp)
 
-
-
-
-
+### 扩展学习
+1. 无重叠最长重复子串 POJ 1743
+2. 有关更多后缀数组的题 参考 vjudge->[后缀数组入门](https://vjudge.net/contest/58608#overview)(注 vjudge上面很多分类的题适合系统复习)
+3. 可重叠的K次最长重复子串(POJ 3261)
+4. 重复次数最多的连续重复子串的长度(SPOJ 687)
+5. 求重复次数最多的子串 POJ 3693
+6. 至少重复k次的可重叠的最长重复子串 POJ 3882
+7. RMQ (Range Minimum/Maximum Query) 求解中的 ST 算法
+8. LCA 与 RMQ
 
 
 
