@@ -17,7 +17,7 @@ Each inline function has either zero or one definition of itself generated withi
 
 模块的含义就是：包含其定义与实现文件的所有文件组成的集合。一般 inline 的实现和定义一起都放在头文件中，这里要把两者放在一起也是作用域的问题，如果只在头文件中放置声明，而需要在其他文件中调用的话，仅仅包含该函数定义的头文件是不行的，还需要包含其实现文件。
 
-而原文中 0 或 1 次生成的原因是，内联函数是在编译时展开，而不会存在普通函数调用的返回地址入栈出栈等操作，因此如果仅仅是定义了内联函数，而在模块中没有调用，那么，生成内联函数就是无用的，因此编译器可能放弃生成该函数。为了验证该观点，我做了如下实验：
+而原文中 0 或 1 次生成的原因是，内联函数是在编译时展开，而不会存在普通函数调用的返回地址入栈出栈等操作，因此**如果仅仅是定义了内联函数，而在模块中没有调用，那么，生成内联函数就是无用的，因此编译器可能放弃生成该函数**。为了验证该观点，我做了如下实验：
 
 * 普通函数定义并调用
 ``` cpp
@@ -80,4 +80,20 @@ int main()
 ➜  ~ ls -al main
 -rwxrwxr-x 1 kqf kqf 8904 7月  25 11:18 main
 ```
-我们可以看到同样函数定义并调用，内联和普通函数生成的程序空间是一样大的，同样的函数定义了却没有调用，其中普通函数生成的程序占用空间要大些，而内联函数要小些，所以可以推测内联函数没有生成。
+我们可以看到同样函数定义并调用，内联和普通函数生成的程序空间是一样大的，同样的函数定义了却没有调用，其中普通函数生成的程序占用空间要大些，而内联函数要小些，所以可以推测内联函数没有生成。如果要确定的话，我们可以用readelf进行分析，可以对比 定义同样函数但不调用时，普通函数与内联函数的区别。使用`readelf -s main`分析两个程序的符号表，可以发现内联函数多出来的符号：
+``` shell
+Symbol table '.dynsym' contains 13 entries:
+	Num:    Value          Size Type    Bind   Vis      Ndx Name
+     7: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND _ZStlsISt11char_traitsIcE@GLIBCXX_3.4 (2)
+     9: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND _ZNSolsEPFRSoS_E@GLIBCXX_3.4 (2)
+    10: 0000000000400730     0 FUNC    GLOBAL DEFAULT  UND _ZSt4endlIcSt11char_trait@GLIBCXX_3.4 (2)
+    12: 0000000000601060   272 OBJECT  GLOBAL DEFAULT   26 _ZSt4cout@GLIBCXX_3.4 (2)
+	
+Symbol table '.symtab' contains 72 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+    61: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND _ZStlsISt11char_traitsIcE
+    65: 0000000000400846    35 FUNC    GLOBAL DEFAULT   14 _Z3funv
+    67: 0000000000601060   272 OBJECT  GLOBAL DEFAULT   26 _ZSt4cout@@GLIBCXX_3.4
+    72: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND _ZNSolsEPFRSoS_E@@GLIBCXX
+    73: 0000000000400730     0 FUNC    GLOBAL DEFAULT  UND _ZSt4endlIcSt11char_trait
+```
