@@ -12,4 +12,9 @@
 6. 对象的执行特性
 7. 对象的上层特性
 
-注本书的所有实验环境都是`Qt 5.6.3 MinGW 32bit mingw4.9`
+注本书的所有实验环境都是`Qt 5.6.3 MinGW 32bit mingw4.9`，在该环境下`sizeof(int) = 4` `sizeof(double) = 8` `sizeof(long) = 4` `sizeof(long long) = 16`
+
+参考
+1. [《深度探索C++对象模型》笔记汇总](http://www.roading.org/develop/cpp/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2c%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B%E7%AC%94%E8%AE%B0%E6%B1%87%E6%80%BB.html)
+
+2. [《深度探索C++对象模型》精简笔记](https://blog.csdn.net/yang_yulei/article/details/8738802)
