@@ -97,3 +97,9 @@ Symbol table '.symtab' contains 72 entries:
     72: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND _ZNSolsEPFRSoS_E@@GLIBCXX
     73: 0000000000400730     0 FUNC    GLOBAL DEFAULT  UND _ZSt4endlIcSt11char_trait
 ```
+
+#### C++ 对象模型
+在C++中的 `data member` 有两种 `nonstatic data member` 和 `static data member` ，而 `function member` 有三种 `static function member` `nonstatic function member` `virtual function member`。对于 `nonstatic data member` 会被置于每个对象中保存一份，而对于 `static data member` `static function member` `nonstatic function member` 会在所有的对象之外为每个class维护一份。
+而对于 `virtual function member` 编译器会把所有的 虚函数 的指针防止一个表格之中，这个表格被称为虚表`vtbl`，然后为每个对象维护一个指向虚表的指针。并且在虚表中的第一个位置通常存放了对象的类型信息，用以支持`RTTI`(runtime type identification)。
+
+##### 虚基类的存储

@@ -1000,7 +1000,7 @@
                     re.push_back(str);
                     return;
                 }
-    
+                // 这个判断是为了消除重复字母也进行交换而得到重复串 
                 if( i != index && str[i] == str[index])
                     continue;
                 swap(str[index],str[i]);
