@@ -579,14 +579,22 @@
     public:
         bool isSameTree(TreeNode* pRoot1, TreeNode* pRoot2)
         {
-            if(pRoot1 == nullptr || pRoot2 == nullptr)
+            if(pRoot2 == nullptr)
+                return true;
+            if(pRoot1 == nullptr)
                 return false;
-            while(pRoot1->)
+            return (pRoot1->val == pRoot2->val && isSameTree(pRoot1->left,pRoot2->left) && isSameTree(pRoot1->right,pRoot2->right));
         }
         bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
         {
-            if(pRoot2 == nullptr)
+            if(pRoot1 == nullptr || pRoot2 == nullptr)
                 return false;
+            if(isSameTree(pRoot1,pRoot2))
+                return true;
+            else
+            {
+                return (HasSubtree(pRoot1->left,pRoot2) || HasSubtree(pRoot1->right,pRoot2));
+            }
         }
     };
     ```
