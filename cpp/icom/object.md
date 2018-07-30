@@ -80,7 +80,9 @@ int main()
 ➜  ~ ls -al main
 -rwxrwxr-x 1 kqf kqf 8904 7月  25 11:18 main
 ```
+
 我们可以看到同样函数定义并调用，内联和普通函数生成的程序空间是一样大的，同样的函数定义了却没有调用，其中普通函数生成的程序占用空间要大些，而内联函数要小些，所以可以推测内联函数没有生成。如果要确定的话，我们可以用readelf进行分析，可以对比 定义同样函数但不调用时，普通函数与内联函数的区别。使用`readelf -s main`分析两个程序的符号表，可以发现内联函数多出来的符号：
+
 ``` shell
 Symbol table '.dynsym' contains 13 entries:
 	Num:    Value          Size Type    Bind   Vis      Ndx Name
