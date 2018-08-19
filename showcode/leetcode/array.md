@@ -123,6 +123,42 @@ void nextPermutation(vector<int>& nums) {
 }
 ```
 
+#### Trapping Rain Water {#42}
+通过找到最高点的下标，然后从左右进行遍历得到
+
+该题也有单调栈的解法，就是维护一个递减的栈用来记录下标
+```
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        const int n = height.size();
+        int maxindex = 0;
+        int re = 0;
+        for(int i = 0; i < n; ++i)
+        {
+            if(height[i] > height[maxindex])
+                maxindex = i;
+        }
+
+        for(int i = 0, peak = 0; i < maxindex; ++i)
+        {
+            if(peak > height[i])
+                re += peak-height[i];
+            else
+                peak = height[i];
+        }
+        for(int i = n-1, peak = 0; i > maxindex; --i)
+        {
+            if(peak > height[i])
+                re += peak-height[i];
+            else
+                peak = height[i];
+        }
+        return re;
+    }
+};
+```
+
 #### Longest Consecutive Sequence {#128}
 由于时间复杂度的要求，所以使用hash表来存储一个段的最长的长度，通过循环剔除已经遍历过的数字
 
