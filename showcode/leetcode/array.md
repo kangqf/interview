@@ -35,6 +35,55 @@ vector<int> twoSum(vector<int>& nums, int target)
     }
 ```
 
+#### Median of Two Sorted Arrays {#4}
+经典的在两个有序数组中查找第k个元素的题，按照二分的思路进行求解
+1. A[k/2-1] < B[k/2-1] 则第k个元素一定不在 A[0:k/2-1] 故删除之，更新k
+2. A[k/2-1] > B[k/2-1] 则第k个元素一定不在 B[0:k/2-1] 故删除之，更新k
+3. A[k/2-1] == B[k/2-1] 则返回A[k/2-1] 
+```
+class Solution {
+public:
+    double findKth(vector<int>::const_iterator itea, vector<int>::const_iterator iteb, int m, int n, int k)
+    {
+        if(m > n)
+            return findKth(iteb,itea,n,m,k);
+        if(m == 0)
+            return *(iteb+k-1);
+        if(k == 1)
+            return min(*itea, *iteb);
+
+        int pa = min(k/2,m);
+        int pb = k - pa;
+        // 删除a数组的无效数据，并更新k
+        if(*(itea+pa-1) < *(iteb+pb-1))
+        {
+            return findKth(itea+pa,iteb,m-pa,n,k-pa);
+        }
+        // 删除b数组的无效数据，并更新k
+        else if(*(itea+pa-1) > *(iteb+pb-1))
+        {
+            return findKth(itea,iteb+pb,m,n-pb,k-pb);
+        }
+        else
+            return *(itea+pa-1);
+    }
+    
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        const int m = nums1.size();
+        const int n = nums2.size();
+        int total = m+n;
+        if(total & 0x1)
+        {
+            return findKth(nums1.begin(),nums2.begin(),m,n,total/2+1);
+        }
+        else
+        {
+            return (findKth(nums1.begin(),nums2.begin(),m,n,total/2)+findKth(nums1.begin(),nums2.begin(),m,n,total/2+1))/2.0;
+        }
+    }
+};
+```
+
 #### Next Permutation {#31}
 参考[Next Permutation 解题报告](http://fisherlei.blogspot.com/2012/12/leetcode-next-permutation.html) 主要分为下面四个步骤。
 
