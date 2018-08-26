@@ -158,6 +158,91 @@ public:
     }
 };
 ```
+#### Permutations {#46}
+一个非标准的深搜的示例，可以通过 遍历交换点 固定起始点 然后得到结果
+
+``` cpp
+class Solution {
+public:
+    void perm(vector<vector<int>> &re, vector<int> &nums, int from, int to)
+    {
+        if(from == to)
+        {
+            re.push_back(nums);
+        }
+        else
+        {
+            for(int i = from; i <= to; ++i)
+            {
+                swap(nums[i],nums[from]); // 固定from位
+                perm(re,nums,from+1,to);
+                swap(nums[i],nums[from]);
+            }
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> re;
+        if(nums.empty())
+        {
+            return re;
+        }
+        else
+        {
+            perm(re,nums,0,nums.size()-1);
+        }
+        return re;
+    }
+};
+```
+
+#### Permutations II {#47}
+同上，但是注意重复数就不需要交换的判定：如果后面有数字与当前数字相同，则当前数字不需要交换，直到当前数字后面没有重复的才能交换。
+
+``` cpp
+class Solution {
+public:
+    void perm(vector<vector<int>> &re, vector<int>& nums, int from, int to)
+    {
+        if(from == to)
+        {
+            re.push_back(nums);
+        }
+        else
+        {
+            for(int i = from; i <= to; ++i)
+            {
+                bool canSwap = true;
+                for(int j = i+1; j <= to; ++j)
+                {
+                    if(nums[j] == nums[i])
+                    {
+                        canSwap = false;
+                        break;
+                    }
+                }
+                if(canSwap)
+                {
+                    swap(nums[i],nums[from]);
+                    perm(re,nums,from+1,to);
+                    swap(nums[i],nums[from]); 
+                }
+            }
+        }
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> re;
+        if(nums.empty())
+        {
+            return re;
+        }
+        else
+        {
+            perm(re,nums,0,nums.size()-1);
+        }
+        return re;
+    }
+};
+```
 
 #### Longest Consecutive Sequence {#128}
 由于时间复杂度的要求，所以使用hash表来存储一个段的最长的长度，通过循环剔除已经遍历过的数字

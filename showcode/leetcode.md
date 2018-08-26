@@ -10,7 +10,11 @@
 
 [28. Implement strStr()](.leetcode/string.md#28)
 
-[42. Trapping Rain Water](./leetcode/array.md##42)
+[42. Trapping Rain Water](./leetcode/array.md#42)
+
+[46. Permutations](./leetcode/array.md#46)
+
+[47. Permutations II](./leetcode/array.md#47)
 
 [53. Maximum Subarray](./leetcode/dp.md#53)
 
