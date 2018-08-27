@@ -106,7 +106,7 @@ void nextPermutation(vector<int>& nums) {
         if(*ite < *(ite+1))
             break;
     }
-    if(ite == nums.begin() && *ite >= *(ite+1))
+    if(ite == nums.begin() && *ite >= *(ite+1)) // 本来就是逆序
     {
         reverse(ite,nums.end());
         return;
@@ -158,6 +158,7 @@ public:
     }
 };
 ```
+
 #### Permutations {#46}
 一个非标准的深搜的示例，可以通过 遍历交换点 固定起始点 然后得到结果
 
@@ -275,4 +276,34 @@ int longestConsecutive(vector<int>& nums) {
     }
     return result;
 }
+```
+
+#### Find Minimum in Rotated Sorted Array {#153}
+特别注意边界条件的判断，比如本身是逆序或有序
+
+``` cpp
+class Solution {
+public:
+    int findm(vector<int>& nums, int start, int end)
+    {
+        int middle = start + (end-start)/2;
+        if(nums[middle] > nums[start])
+        {
+            if(nums[middle] < nums[end]) // 处理升序情况
+                return nums[start];
+            else 
+                return findm(nums,middle,end);
+        }
+        else if(nums[middle] < nums[start])
+            if(nums[middle] > nums[end]) // 处理逆序情况
+                return nums[end];
+            else
+                return findm(nums,start,middle);
+        else // 出现相等情况肯定是区间快闭合了
+            return min(nums[start],nums[end]);
+    }
+    int findMin(vector<int>& nums) {
+        return findm(nums,0,nums.size()-1);
+    }
+};
 ```
