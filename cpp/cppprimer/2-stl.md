@@ -24,7 +24,7 @@ isalpha(ch);
 isalnum(ch);
 islower(ch);
 isupper(ch);
-tolower(ch);
+tolower(ch); // for(auto &c:str) c = tolower(c);
 toupper(ch);
 ```
 #### c标准库的string函数
