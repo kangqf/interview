@@ -31,7 +31,7 @@ extern int a = 0; // 包含初始值的声明就成了定义
 13. 空指针nullptr为C++11标准的特殊类型的字面值，而NULL则是则是预处理变量（宏）。
 14. 声明符由修饰符与变量标识符组成，在定义多个变量时通常将修饰符与变量标识符写在一起：`int **pp, *p, k, *&p=p`。
 15. const对象一旦创建就不能改变因此其必须初始化。
-16. 常量表达式是指不会改变并且在编译过程就能得到计算结果的表达式：`constexpr int x = y+1;`
+16. 常量表达式是指不会改变并且在编译过程就能得到计算结果的表达式：`constexpr int x = y+1;` 
 17. 类型别名`typedef int arrT[10]` == `using arrT = int[10]`
 18. auto 通过初始值来推算变量类型，因此auto定义的变量必须有初始值，auto会忽略顶层const，auto还会忽略引用类型并返回引用所指向的真实的类型。
 19. decltype 选择并返回操作数的数据类型，编译器只分析表达式的类型却不实际计算表达式的值，其可以识别顶层与底层const，也可以返回引用。对于decltype 使用的操作数来说，如果不加括号，那么就把它当做普通变量，得到的结果就是该变量的类型；如果加上括号，就把它当做一个表达式，也就是说如果对一个变量加上了括号就会将其当做是可以作为赋值语句左值的特殊表达式，就是引用类型：`int i = 0; decltype( (i) ) r = i`r就是引用类型。
@@ -44,5 +44,22 @@ extern int a = 0; // 包含初始值的声明就成了定义
 string line;
 while(getline(cin,line)
     cout<<line<<endl;
+// 重新处理输入的方式
+#include <sstream>
+istringstream input;
+input.str(line);
+string str;
+while(input>>str)
+    cout<<str;
 ```
-25. 
+25. `int arr[10]; auto auarr(arr); decltype(arr) dearr;` 其中auarr是一个指针类型，而dearr是10维数组类型。也就是说auto操作会发生类型转换，而decltype则不会。
+26. 内置类型的下标运算符使用的索引值不是无符号类型，而可以是负数，但是千万要注意越界的问题。
+27. 为了实现对二维数组的range-for 对第一维的for循环遍历应该是引用形式，这可以防止数组被自动转换为指针。
+28. 当一个对象被用作右值的时候用的是对象的值，而用于左值的时候用的是对象的身份，对于右值可以使用左值来代替，而反过来不行。
+29. 对于左值对象使用decltype()会返回引用类型。例如 `int *p;decltype(*p);`的结果是int &。
+30. 赋值运算符满足右结合律，例如`i=j=0;`会先对j赋值为0，再为i赋值为j的值。
+31. sizeof 不会把数组名当成指针来处理，也就是说sizeof会得到整个数组所占空间的大小。
+32. 如果无符号类型的大小等于带符号的类型的大小，那么带符号类型将会转换为无符号类型进行运算。
+33. 数组名不会转为指针的几种情况，decltype & sizeof typeid 这四种情况。
+34. 强制类型转换 `cast-name<type> (expression)` cast-name 是 `static_cast` `dynamic_cast` `const_cast` `reinterpret_cast` 四种，其中`static_cast` 适用于具有明确定义的类型转换，并且只要不包含底层const都可以使用，例如将较大的算术类型赋值给较小的算术类型。`const_cast` 用于将常量对象转换为非常量对象的行为。`reinterpret_cast` 用于为运算对象的位模式提供较低层次的重新解释，例如将`int * `转 `char *`。`dynamic_cast`用于通常含有虚函数类类型的父类与子类的指针，左值引用，或右值引用的类型转换，对于指针转换失败会返回空指针，而引用类型则抛出`bad_cast`异常。
+35. 
