@@ -51,6 +51,39 @@ size();
 
 ```
 
+#### bitset
+bitset里面支持了很多与位有关的操作，bitset类是一个类模板，接收一个表示二进制位的个数的非类型模板参数
+```
+// 构造函数
+bitset<n> b;// 每位初始化为0
+bitset<n> b(ull);//将一个 unsigned long long 的类型的低n位拷贝到b 例如 bitset<32> b(0xff);
+bitset<n> b(bitstr);//从一个string构造，string中只能包含 0 或 1
+bitset<n> b(str,last); // 使用string 中最后last个字符
+bitset<n> b<str,pos,num); // 从pos开始使用，使用num个字符
+
+// 重要操作
+b.to_ulong();
+b.to_ullong();
+b.to_string();
+b.test(pos); b[pos]; //查看pos位的值是否为1
+b.count(); // 统计为1的位数数目
+b.size(); // 返回b总共包含的位数
+b.set(); // 将所有位置1
+b.set(pos,v); // 将pos处的位赋值为bool值v
+b.reset(); // 将所有位置0
+b.reset(pos); // 将pos处的位置0
+b.flip(); // 将所有位取反
+b.flip(pos); // 将pos 处位取反
+os<<b; // 以字符01 的方式打印b中的字符
+in>>b; // 从in输入读取字符，直到读取b.size()个字符，或是遇到非01的字符
+
+// 测试操作
+b.any(); // 是否存在1
+b.all(); // 是否所有位都是1
+b.none();// 是否没有一个1
+
+```
+
 #### 迭代器
 ``` cpp
 vector<int>::iterator ite;
@@ -69,4 +102,6 @@ vetctor<int> vec(begin(arr),end(arr)); // 使用数组类型初始化vector
 int a[] = {1,2,3,4};
 int *begin = begin(a); // 首指针
 int *end = end(a); // 尾后指针 
+do{//toto}
+while(next_permutation(str.begin(),str.end()));
 ```
