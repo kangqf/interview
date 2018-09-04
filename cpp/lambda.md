@@ -1,5 +1,5 @@
 ## lambda 表达式
-Lambda 表达式，也叫 Lambda 函数，也就是cpp中的匿名函数。 其实就是一个匿名函数对象 然后返回函数的调用地址。
+Lambda 表达式，也叫 Lambda 函数，也就是cpp中的匿名函数，也称为闭包(因其能够捕获作用域中的对象)，其实就是一个匿名函数对象 然后返回函数的调用地址。
 ### 基本语法
 `[ captures ] <tparams>(可选)(C++20) ( params ) specifiers(可选) exception attr -> ret requires(可选)(C++20) { body }`
 

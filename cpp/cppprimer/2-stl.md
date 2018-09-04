@@ -10,7 +10,9 @@ length();
 string::size_type; // 无符号整数
 decltype(str.size()) aaa; // 定义 size_type 变量: 
 string str(num,ch); // 构造函数
-for(auto &c:str) toupper(c); // 为了改变str中的字符的值，必须把循环变量变成引用类型
+for(auto &c:str) c = toupper(c); // 为了改变str中的字符的值，必须把循环变量变成引用类型
+
+str.substr(pos,count); // 从指定pos处开始获取指定数目的字符作为子串
 ```
 一些错误用法：
 ``` cpp
@@ -24,7 +26,7 @@ isalpha(ch);
 isalnum(ch);
 islower(ch);
 isupper(ch);
-tolower(ch); // for(auto &c:str) c = tolower(c);
+tolower(ch); 
 toupper(ch);
 ```
 #### c标准库的string函数
@@ -43,6 +45,17 @@ str.c_str(); // 获取string对象的c风格字符串
 vector<int> v1(10,0); // 10 个 0
 vector<int> v2{10,0}; // 一个10 一个0
 ```
+
+vector 插入与删除，对于下面的pos 指的都是迭代器
+``` cpp
+vector.insert(pos,elem);   //在pos位置插入一个elem元素的拷贝，返回新数据的位置。
+vector.insert(pos,n,elem);   //在pos位置插入n个elem数据，无返回值。
+vector.insert(pos,beg,end);   //在pos位置插入[beg,end)区间的数据，无返回值
+
+vec.erase(beg,end);  //删除[beg,end)区间的数据，返回下一个数据的位置。
+vec.erase(pos);    //删除pos位置的数据，返回下一个数据的位置。
+```
+
 vector 支持的一些函数操作
 ``` cpp
 push_back();
@@ -104,4 +117,18 @@ int *begin = begin(a); // 首指针
 int *end = end(a); // 尾后指针 
 do{//toto}
 while(next_permutation(str.begin(),str.end()));
+```
+
+#### 标准库算法
+```
+upper_bound(first,last,val); //寻找[first,last) 之间首个大于val的元素，并返回其迭代器
+lower_bound(first,last,val); //寻找[first,last) 之间首个大于等于val的元素，并返回其迭代器
+
+to_string(int); // 将int 转 string
+stoi(string); stol(string); stof(string); stod(string); // 将string转换位其他的类型
+
+sort(first,last,fun); // 排序
+ite = unique(first,last,fun); // 返回第一个重复元素的下标， 可以调用v.erase(ite,v.end());来删除重复的。fun用于定制两个元素是否相同的策略
+ite = find(first,last,val); // 返回值为val的元素的迭代器，如果没有，则返回尾后迭代器end()
+
 ```
