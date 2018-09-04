@@ -108,6 +108,9 @@ t与f的区别在于t移动到字符位置之前，而f则直接移动到字符�
 
 插件[ctrlsf.vim](https://github.com/dyng/ctrlsf.vim)
 
+依赖于ack 或 grep  或 ag 对于 msys2 需要先安装 `pacman -S mingw-w64-x86_64-ag`
+
+然后设置选项`let g:ctrlsf_ackprg = 'ag'`
 ```
 <Leader>sp :CtrlSF<CR>  整个工程内查找
 p                       得到搜索结果预览后按p 查看上下文源码
@@ -237,7 +240,6 @@ s                          切换tag的排序方式
 <Leader>tn :tnext<CR>      下一个标签
 <Leader>tp :tprevious<CR>  上一个标签
 ```
-
 
 #### 书签
 `'m` 引用书签。 例如：`g'm`  跳到`mark==m`处
@@ -369,6 +371,20 @@ nw <C‐W><C‐W>
 #### 其它骚操作
 
 [NERDtree](https://github.com/scrooloose/nerdtree) 插件可以查看文件列表
+```
+o 在之前的窗口打开文件，文件夹，书签
+go 打开所选的文件，文件夹，书签，但是光标停留在NERDTree
+t 在新的tab打开文件，文件夹，书签
+T 打开所选的文件，文件夹，书签，但是光标停留在NERDTree
+i 以分屏方式打开，文件，文件夹，书签
+gi 以分屏方式打开，文件，文件夹，书签，但是光标停留在NERDTree
+s 水平分屏打开文件，
+gs 水平分别打开文件，但是光标停留在NERDTree
+O 打开所选的文件夹的所有嵌套文件夹
+x 关闭当前节点的父节点
+X 递归关闭所有当前节点，及其子节点
+e 编辑当前目录
+```
 
 [MiniBufExplorer](https://github.com/fholgado/minibufexpl.vim) 可以把所有 buffer 罗列出来
 
