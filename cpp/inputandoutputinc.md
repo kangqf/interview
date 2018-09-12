@@ -1,14 +1,11 @@
 ## C输入与输出
 
-1. printf
-
+### printf
 ``` c
 printf("%-3.2f",var); // 输出一个浮点数，最少有三位数，小数位有两位，右对齐，补空格
 printf("%05.2f",var); // 输出一个浮点数，最少有五位数，小数位有两位，左对齐，补0
 ```
-
-2. 输出输入方式的比较
-
+### 输出输入方式的比较
 ``` c
 char getc(FILE *stream);        // 从指定流获取一个字符
 void putc(char c,FILE *stream); // 输出一个字符串到指定流
@@ -31,7 +28,7 @@ char * fgets(char * str, int num, FILE *stream); // 从指定流读入最多num�
 char * fputs(char * str, FILE * stream ); // 输出字符串到指定流
 ```
 
-3. printf 系列
+### printf 系列
 区别主要在： 输出到的位置是 标准输出 还是 流对象(f) 还是 缓冲数组(s) 以及是否有最大的大小限制(sn)
 ``` c
 #include <stdio.h>
@@ -52,14 +49,14 @@ int vsprintf(char *str, const char *format, va_list ap);
 int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 ```
 
-4. EOF
+### EOF
 
 值为 -1 文件输入结束的标识符，常用来判断输入是否完成
 
-5. C 可变参数函数
-printf("%d, %d, %d",i + 3, i + 2, i + 1);
+### C 可变参数函数 {#varargs}
+`printf("%d, %d, %d",i + 3, i + 2, i + 1);`
 
-首先最右边i + 1 为1入栈，栈的地址又下往上是高到低，
+首先最右边i + 1 为1入栈，栈的地址由下往上是高到低，
 然后 i+3 首先被弹出栈。
 
 ``` c
@@ -96,7 +93,8 @@ int main(int argc, char *argv[])
 }
 ```
 
-6. VA_LIST的用法： 
+### `VA_LIST`的用法： 
+
 ```     
 1. 首先在函数里定义一具VA_LIST型的变量，这个变量是指向参数的指针
 2. 然后用VA_START宏初始化变量刚定义的VA_LIST变量，这个宏的第二个参数是第一个可变参数的前一个参数，是一个固定的参数。
