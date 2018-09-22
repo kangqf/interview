@@ -1,4 +1,4 @@
-### C++ 基础
+### C++ 基础 {#basic}
 
 1. 除了 `cin` `cout` 之外，标准库还定义了 `cerr` `clog` 用来输出错误警告信息和日志信息。
 2. `<<` 运算符返回其左侧运算对象。
@@ -61,8 +61,12 @@ while(input>>str)
 31. sizeof 不会把数组名当成指针来处理，也就是说sizeof会得到整个数组所占空间的大小。
 32. 如果无符号类型的大小等于带符号的类型的大小，那么带符号类型将会转换为无符号类型进行运算。
 33. 数组名不会转为指针的几种情况，decltype & sizeof typeid 这四种情况。
-34. 强制类型转换 `cast-name<type> (expression)` cast-name 是 `static_cast` `dynamic_cast` `const_cast` `reinterpret_cast` 四种，其中`static_cast` 适用于具有明确定义的类型转换，并且只要不包含底层const都可以使用，例如将较大的算术类型赋值给较小的算术类型。`const_cast` 用于将常量对象转换为非常量对象的行为。`reinterpret_cast` 用于为运算对象的位模式提供较低层次的重新解释，例如将`int * `转 `char *`。`dynamic_cast`用于通常含有虚函数类类型的父类与子类的指针，左值引用，或右值引用的类型转换，对于指针转换失败会返回空指针，而引用类型则抛出`bad_cast`异常。
+34. 强制类型转换 `cast-name<type> (expression)` cast-name 是 `static_cast` `dynamic_cast` `const_cast` `reinterpret_cast` 四种，其中`static_cast` 适用于具有明确定义的类型转换，并且只要不包含底层const都可以使用，例如将较大的算术类型赋值给较小的算术类型。`const_cast` 用于将常量对象转换为非常量对象的行为。`reinterpret_cast` 用于为运算对象的位模式提供较低层次的重新解释，例如将`int * `转 `char *`，也就是说不会对数据的二进制位进行诸如类型检查数组越界的检测，例如`float a = 1.5`而`static_cast<int>(x)`只会读取a中的部分位，而`reinterpret_cast<int *>(&x)`则不会`reinterpret_cast`一般用于指针，对于不能转换的会编译出错。`dynamic_cast`用于通常含有虚函数类类型的父类与子类的指针，左值引用，或右值引用的类型转换，对于指针转换失败会返回空指针，而引用类型则抛出`bad_cast`异常。
 35. 局部静态变量没有显示初始值的话会执行值初始化，内置类型将执行零初始化为0。
 36. 函数的三要素：返回类型，函数名，参数类型，描述了函数的接口，说明了调用该函数所需要的全部信息。
 37. 实参初始化形参时会忽略掉顶层const，当形参有顶层const修饰时`void fun(const int x);`，传给对象的实参可以是const或非const，因为const也会被忽略。同时形参是否是const无法区分函数重载`void fun(int x);`与前面的函数一样不能区分，因为如果传入一个 int 或 const int 两个函数都能够适配引发二义性。
-38. 参数可变函数，一种实现的方法是让参数类型为 `initializer_list<T>` 类型来适配相同类型的多个参数，对于不同类型的参数，则需要使用可变参数模板来实现。还有一种实现方式就是省略符形参`void fun(int first, ...)`这个是c语言里面可变参数函数的实现方法，具体参考[C 可变参数函数](../inputandoutput.md#varargs) 
+38. 参数可变函数，一种实现的方法是让参数类型为 `initializer_list<T>` 类型来适配相同类型的多个参数，对于不同类型的参数，则需要使用可变参数模板来实现。还有一种实现方式就是省略符形参`void fun(int first, ...)`其中逗号可以省略，这个是c语言里面可变参数函数的实现方法，具体参考[C 可变参数函数](../inputandoutputinc.md#varargs)。
+39. 不要返回局部对象的引用或指针，因为它所指向的对象可能不再有定义。调用一个返回引用的函数得到左值，其他返回类型返回右值。
+40. 列表化返回值，例如一个返回`vector<int>`类型的函数可以返回一个花括号包围的值得列表。例如 `return {1,2,a,b};列表化返回值，例如一个返回`vector<int>`类型的函数可以返回一个花括号包围的值得列表。例如 `return {1,2,a,b};`。
+41. 返回数组的指针， `using arrP = int[10];` `typedef int arrP[10];` 两种方式定义数组的别名。然后可以使用`arrP * fun(int x);`来声明一个函数，来实现返回数组的指针的目的。同样的实现可以是 ` int (*fun(int x))[10]; ` 或者是 `auto fun(int x) -> int(*)[10]` 这种方式被称为尾置返回类型。
+42.  
