@@ -28,9 +28,9 @@
 根据上面的workflow我们就能大致知道新建一本书籍的大概流程
 
 1. 安装 gitbook -> `npm install gitbook-cli -g`，安装编辑器
-2. 在Github新建一个仓库，然后clone到本地
-3. `gitbook init`初始化一本书籍
-4. 用编辑器导入，然后修改，保存
+2. 在Github新建一个仓库，然后clone到本地，注意这里需要使用https，如上所述，gitbook editor 不支持ssh只支持https
+3. `gitbook init`初始化一本书籍，然后提交本地的修改，并push到github
+4. 用编辑器导入，导入后源目录就失效了，新的目录在`C:\Users\kqf\GitBook\Library\Import`下面并且每次的提交也是提交在该目录下面，然后通过editor修改(每一次的Ctrl+s 都是一次commit，一次同步就是一次push和pull)，保存章节结构相关内容，提交之后用vim添加文章内容
 5. `gitbook server`预览书籍，没有问题就同步到Github
 6. 在GitBook通过Github新建一本书籍，然后它就会自动Github同步
 
